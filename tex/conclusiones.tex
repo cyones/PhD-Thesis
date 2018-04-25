@@ -1,0 +1,43 @@
+\chapter{Conclusiones}
+En este estudio, presentamos una nueva metodología de predicción pre-miARN compuesta por tres etapas. Para la primer etapa, se desarrolló un método para
+extraer secuencias con estructura secundaría tipo horquilla del genoma completo. Este método contempla ademas el recorte de las secuencias y la eliminación
+de horquillas repetidas, tanto idénticas como similares. Las pruebas en los genomas de 6 especies demostraron que el método propuesto encuentra una mayor
+cantidad de horquillas que el único método disponible para esta tarea y, lo que es más importante aun, una mayor cantidad de pre-miARNs. El método con el
+cual se comparó encontró en cada genoma aproximadamente un 90\% de los pre-miARNs conocidos llegando a un 80\% en el caso de una especie no modelo.
+En cambio la metodología propuesta alcanzó en valores cercanos al 100\% en todos las especies.
+En segundo lugar, se realizó una exhaustiva revisión del estado del arte para analizar que características se utilizan en al predicción de microARN. Con
+esta información se desarrollo una librería llamada de algoritmos de extracción de características y una versión web para utilizar estos
+algoritmos sin la necesidad de tener conocimientos sobre programación. Consideramos ademas que la revisión del estado del arte y la posterior recopilación
+de información puede ser de gran valor para la comunidad.
+Por último, se desarrolló un algoritmo de predicción que utiliza un enfoque semi-supervisado para enfrentar el problema de ejemplos de entrenamiento escasos
+y poco confiables. Los experimentos realizados en una configuración supervisada forzada mostraron que alcanza las tasas de clasificación de los mejores métodos
+del estado del arte en pruebas de validación cruzada estándar en tiempos más cortos. El método propuesto también se probó en condiciones que están más
+cerca de una tarea de predicción real, donde se reduce el número de secuencias etiquetadas. En estas pruebas, superó claramente al mejor método supervisado
+disponible el cual sufrió una importante caída de desempeño. Ademas se obtuvieron mejores resultados que otro método diseñado especialmente para trabajar con
+pocos ejemplos de entrenamiento. Para la última prueba se procesaron tres genomas de especies modelos y se compararon resultados con varios métodos del estado
+del arte. En esta prueba una gran cantidad de métodos fallaron porque no fueron capaces de procesar la gran cantidad de horquillas. Los métodos que funcionaron
+obtuvieron desempeños por debajo del obtenido con el método desarrollado, en algunos casos cercanos al error \textit{by chance}.
+
+
+Los resultados a lo largo de este trabajo permiten arribar a las siguientes conclusiones
+\begin{itemize}
+\item Existía una autentica necesidad de mejorar el proceso de extracción de horquillas del genoma completo, dado que los métodos existentes no se desempeñaban
+	satisfactoriamente y una gran cantidad de pre-miARNs se perdían en este temprano paso.
+\item La metodología diseñada para la extracción de horquillas del genoma logró superar esta falencia al lograr extraer casi todos los pre-miARNs en los genomas
+	en los que se realizaron pruebas.
+\item Muchos métodos de predicción del estado del arte son desarrollados sin tener en cuenta la escalabilidad, por lo que resultan imposibles de aplicar a tareas
+	de predicción en genomas completos.
+\item La biblioteca de extracción de características desarrollada permite calcular la gran mayoría de las características utilizadas en la predicción de miARNs en la
+	actualidad.
+\item La interfaz web de extracción de características permite obtener vectores numéricos a partir de secuencias a usuarios sin conocimientos de programación.
+\item Los ejemplos negativos que se utilizan para entrenar muchos métodos de predicción del estado del arte no son representativos de la clase completa de secuencias
+	no miARN.
+\item Los métodos supervisados de predicción de miARN logran tasas de desempeño muy altas pruebas de validación cruzada con una clase negativa definida artificialmente,
+	pero el rendimiento disminuye en gran medida cuando tienen que enfrentar la diversidad de secuencias que se pueden encontrar en un genoma real. Por lo tanto,
+	esta metodología de validación no permite obtener conclusiones confiables sobre el desempeño de las distintas técnicas de predicción.
+\item El método de predicción desarrollado resulta eficiente y escalable, lo que permite procesar genomas completos con varios millones de horquillas.
+\item El método de predicción desarrollado busca automáticamente una amplia variedad de ejemplos negativos entre las secuencias tipo horquilla. Ademas, al ser un algoritmo
+	de aprendizaje semi-supervisado, tiene en cuenta la distribución de las secuencias sin etiqueta en el espacio de las características para ajustar fronteras de
+	decisión alrededor de los pre-miARNs. Esto permite un mejor desempeño que el de los métodos supervisados del estado del arte.
+\end{itemize}
+

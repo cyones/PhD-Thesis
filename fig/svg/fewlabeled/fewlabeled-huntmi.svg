@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="9.7482796in"
+   height="5in"
+   viewBox="0 0 877.34519 449.99999"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
+   sodipodi:docname="fewlabeled-huntmi.svg"
+   inkscape:export-filename="/home/cyones/Drive/CONICET/Trabajos/miRNAss - Bioinformatics/res/few_samples_huntmi.png"
+   inkscape:export-xdpi="399.9715"
+   inkscape:export-ydpi="399.9715">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.73097026"
+     inkscape:cx="430.02418"
+     inkscape:cy="132.46854"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-bottom="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     units="in"
+     inkscape:snap-global="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-98.46373,-262.49704)">
+    <g
+       id="g880">
+      <image
+         sodipodi:absref="/home/cyones/Drive/Publicaciones/Tesis/fig/svg/fewlabeled/few_samples_huntmi_human.png"
+         xlink:href="few_samples_huntmi_human.png"
+         width="585"
+         height="225"
+         preserveAspectRatio="none"
+         style="image-rendering:optimizeQuality"
+         id="image4166"
+         x="98.463745"
+         y="262.49704" />
+      <text
+         id="text824"
+         y="471.4538"
+         x="305.28412"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.0625px;line-height:125%;font-family:Sans;-inkscape-font-specification:'Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:'Sans Bold';stroke-width:0.9375px"
+           y="471.4538"
+           x="305.28412"
+           id="tspan822"
+           sodipodi:role="line">Ejemplos etiquetados [%]</tspan></text>
+      <text
+         id="text828"
+         y="342.00204"
+         x="584.15131"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.0625px;line-height:125%;font-family:Sans;-inkscape-font-specification:'Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:'Sans Bold';stroke-width:0.9375px"
+           y="342.00204"
+           x="584.15131"
+           id="tspan826"
+           sodipodi:role="line">Clasificador</tspan></text>
+      <text
+         id="text848"
+         y="286.05649"
+         x="328.32489"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.0625px;line-height:125%;font-family:Sans;-inkscape-font-specification:'Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:'Sans Bold';stroke-width:0.9375px"
+           y="286.05649"
+           x="328.32489"
+           id="tspan846"
+           sodipodi:role="line">Humano</tspan></text>
+    </g>
+    <g
+       id="g864"
+       transform="translate(0,-3e-5)">
+      <image
+         sodipodi:absref="/home/cyones/Drive/Publicaciones/Tesis/fig/svg/fewlabeled/few_samples_huntmi_arabidopsis.png"
+         xlink:href="few_samples_huntmi_arabidopsis.png"
+         width="292.34515"
+         height="225"
+         preserveAspectRatio="none"
+         style="image-rendering:optimizeQuality"
+         id="image4155"
+         x="98.46373"
+         y="487.49707" />
+      <text
+         id="text832"
+         y="510.98581"
+         x="214.51768"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.0625px;line-height:125%;font-family:Sans;-inkscape-font-specification:'Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:'Sans Bold';stroke-width:0.9375px"
+           y="510.98581"
+           x="214.51768"
+           id="tspan830"
+           sodipodi:role="line">Arabidopsis</tspan></text>
+      <text
+         id="text824-3"
+         y="698.22278"
+         x="169.37074"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.0625px;line-height:125%;font-family:Sans;-inkscape-font-specification:'Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:'Sans Bold';stroke-width:0.9375px"
+           y="698.22278"
+           x="169.37074"
+           id="tspan822-6"
+           sodipodi:role="line">Ejemplos etiquetados [%]</tspan></text>
+    </g>
+    <g
+       id="g871"
+       transform="translate(-0.15480995,-3e-5)">
+      <image
+         sodipodi:absref="/home/cyones/Drive/Publicaciones/Tesis/fig/svg/fewlabeled/few_samples_huntmi_virus.png"
+         xlink:href="few_samples_huntmi_virus.png"
+         width="292.34515"
+         height="225"
+         preserveAspectRatio="none"
+         style="image-rendering:optimizeQuality"
+         id="image4188"
+         x="391.11856"
+         y="487.49707" />
+      <text
+         id="text836"
+         y="512.37628"
+         x="538.95404"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.0625px;line-height:125%;font-family:Sans;-inkscape-font-specification:'Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:'Sans Bold';stroke-width:0.9375px"
+           y="512.37628"
+           x="538.95404"
+           id="tspan834"
+           sodipodi:role="line">Virus</tspan></text>
+      <text
+         id="text824-7"
+         y="698.22278"
+         x="470.4989"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.0625px;line-height:125%;font-family:Sans;-inkscape-font-specification:'Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:'Sans Bold';stroke-width:0.9375px"
+           y="698.22278"
+           x="470.4989"
+           id="tspan822-5"
+           sodipodi:role="line">Ejemplos etiquetados [%]</tspan></text>
+    </g>
+    <g
+       id="g850"
+       transform="translate(585.00002,-450.00003)">
+      <image
+         sodipodi:absref="/home/cyones/Drive/Publicaciones/Tesis/fig/svg/fewlabeled/few_samples_huntmi_animal.png"
+         xlink:href="few_samples_huntmi_animal.png"
+         width="292.34515"
+         height="225"
+         preserveAspectRatio="none"
+         style="image-rendering:optimizeQuality"
+         id="image4144"
+         x="98.46373"
+         y="712.49707" />
+      <text
+         id="text844"
+         y="735.47614"
+         x="231.92758"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.0625px;line-height:125%;font-family:Sans;-inkscape-font-specification:'Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:'Sans Bold';stroke-width:0.9375px"
+           y="735.47614"
+           x="231.92758"
+           id="tspan842"
+           sodipodi:role="line">Animal</tspan></text>
+      <text
+         id="text824-35"
+         y="923.46271"
+         x="169.37074"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.0625px;line-height:125%;font-family:Sans;-inkscape-font-specification:'Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:'Sans Bold';stroke-width:0.9375px"
+           y="923.46271"
+           x="169.37074"
+           id="tspan822-62"
+           sodipodi:role="line">Ejemplos etiquetados [%]</tspan></text>
+    </g>
+    <g
+       id="g857"
+       transform="translate(292.34519,-225.00003)">
+      <image
+         sodipodi:absref="/home/cyones/Drive/Publicaciones/Tesis/fig/svg/fewlabeled/few_samples_huntmi_plant.png"
+         xlink:href="few_samples_huntmi_plant.png"
+         width="292.34515"
+         height="225"
+         preserveAspectRatio="none"
+         style="image-rendering:optimizeQuality"
+         id="image4177"
+         x="391.11856"
+         y="712.49707" />
+      <text
+         id="text840"
+         y="735.47614"
+         x="530.9649"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.0625px;line-height:125%;font-family:Sans;-inkscape-font-specification:'Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:'Sans Bold';stroke-width:0.9375px"
+           y="735.47614"
+           x="530.9649"
+           id="tspan838"
+           sodipodi:role="line">Plantas</tspan></text>
+      <text
+         id="text824-9"
+         y="923.46271"
+         x="470.4989"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.0625px;line-height:125%;font-family:Sans;-inkscape-font-specification:'Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:'Sans Bold';stroke-width:0.9375px"
+           y="923.46271"
+           x="470.4989"
+           id="tspan822-1"
+           sodipodi:role="line">Ejemplos etiquetados [%]</tspan></text>
+    </g>
+  </g>
+</svg>

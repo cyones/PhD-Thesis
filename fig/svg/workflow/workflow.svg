@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="215.75543mm"
+   height="91.872818mm"
+   viewBox="0 0 764.48775 325.5336"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
+   sodipodi:docname="workflow.svg"
+   inkscape:export-filename="/home/cyones/Drive/CONICET/Trabajos/miRNAss - Bioinformatics/res/workflow.png"
+   inkscape:export-xdpi="400.03259"
+   inkscape:export-ydpi="400.03259">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.63469646"
+     inkscape:cx="395.3927"
+     inkscape:cy="65.864726"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="739"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:snap-global="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:snap-text-baseline="true"
+     fit-margin-top="4"
+     fit-margin-left="4"
+     fit-margin-right="4"
+     fit-margin-bottom="4" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(10.386394,2.1505795)">
+    <image
+       sodipodi:absref="/home/cyones/Drive/Publicaciones/Tesis/fig/svg/workflow/stem03.png_crop.png"
+       xlink:href="stem03.png_crop.png"
+       inkscape:export-ydpi="199"
+       inkscape:export-xdpi="199"
+       y="177.49301"
+       x="380.15939"
+       id="image4344"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="131.71677"
+       width="180.83876" />
+    <image
+       sodipodi:absref="/home/cyones/Drive/Publicaciones/Tesis/fig/svg/workflow/graph02.png_crop.png"
+       xlink:href="graph02.png_crop.png"
+       inkscape:export-ydpi="199"
+       inkscape:export-xdpi="199"
+       y="12.022794"
+       x="191.22943"
+       id="image4204"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="182.15968"
+       width="182.15968" />
+    <image
+       sodipodi:absref="/home/cyones/Drive/Publicaciones/Tesis/fig/svg/workflow/graph03.png_crop.png"
+       xlink:href="graph03.png_crop.png"
+       inkscape:export-ydpi="199"
+       inkscape:export-xdpi="199"
+       y="12.022794"
+       x="379.49896"
+       id="image4215"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="182.15968"
+       width="182.15968" />
+    <image
+       sodipodi:absref="/home/cyones/Drive/Publicaciones/Tesis/fig/svg/workflow/graph04.png_crop.png"
+       xlink:href="graph04.png_crop.png"
+       inkscape:export-ydpi="199"
+       inkscape:export-xdpi="199"
+       y="12.022794"
+       x="557.76843"
+       id="image4226"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="182.15968"
+       width="182.15968" />
+    <image
+       sodipodi:absref="/home/cyones/Drive/Publicaciones/Tesis/fig/svg/workflow/stem01.png_crop.png"
+       xlink:href="stem01.png_crop.png"
+       inkscape:export-ydpi="199"
+       inkscape:export-xdpi="199"
+       y="177.49301"
+       x="13.620367"
+       id="image4322"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="131.71677"
+       width="180.83876" />
+    <image
+       sodipodi:absref="/home/cyones/Drive/Publicaciones/Tesis/fig/svg/workflow/stem02.png_crop.png"
+       xlink:href="stem02.png_crop.png"
+       inkscape:export-ydpi="199"
+       inkscape:export-xdpi="199"
+       y="177.49301"
+       x="191.88988"
+       id="image4333"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="131.71677"
+       width="180.83876" />
+    <image
+       sodipodi:absref="/home/cyones/Drive/Publicaciones/Tesis/fig/svg/workflow/stem04.png_crop.png"
+       xlink:href="stem04.png_crop.png"
+       inkscape:export-ydpi="199"
+       inkscape:export-xdpi="199"
+       y="177.49301"
+       x="558.42889"
+       id="image4355"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="131.71677"
+       width="180.83876" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.5, 1.5;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 568.5806,230.3238 160.53534,0"
+       id="path4166"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="199"
+       inkscape:export-ydpi="199" />
+    <g
+       id="g4189"
+       inkscape:export-xdpi="199"
+       inkscape:export-ydpi="199">
+      <image
+         sodipodi:absref="/home/cyones/Drive/Publicaciones/Tesis/fig/svg/workflow/graph01.png_crop.png"
+         xlink:href="graph01.png_crop.png"
+         width="182.16"
+         height="182.16"
+         preserveAspectRatio="none"
+         style="image-rendering:optimizeQuality"
+         id="image4193"
+         x="12.959745"
+         y="12.022634" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4158"
+         d="m 74.017857,94.058639 9.642857,31.339281"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4160"
+         d="M 82.767857,125.5765 66.696428,104.77292"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4162"
+         d="m 65.892857,104.9515 3.839285,10.26785"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4164"
+         d="m 72.589285,119.50507 9.553572,6.33928"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4167"
+         d="M 81.964285,127.00507 64.196428,124.23721"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4169"
+         d="m 63.928571,122.4515 4.642857,-3.125"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4171"
+         d="m 72.589285,116.73721 9.107143,-4.55357"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4173"
+         d="M 65,104.86221 62.5,121.2015"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4175"
+         d="M 68.303571,117.4515 55.089285,115.66578"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4177"
+         d="M 53.214285,112.4515 57.232143,95.576496"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4179"
+         d="m 59.732142,95.040782 4.196429,5.803568"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4181"
+         d="m 60.446428,94.415782 25.535714,9.553568"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4183"
+         d="m 69.375,102.09435 -1.875,0"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4185"
+         d="M 66.160714,99.951496 69.464285,86.380068"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4187"
+         d="m 70.803571,86.022925 1.517857,3.482143"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-290.22467"
+       y="13.283905"
+       id="text4275"
+       transform="rotate(-90)"
+       inkscape:export-xdpi="199"
+       inkscape:export-ydpi="199"><tspan
+         sodipodi:role="line"
+         id="tspan4283"
+         x="-290.22467"
+         y="13.283905"
+         style="font-size:12.5px;line-height:1.25;font-family:sans-serif">Vector de etiquetas</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-291.23846"
+       y="383.04449"
+       id="text4275-8"
+       transform="rotate(-90)"
+       inkscape:export-xdpi="199"
+       inkscape:export-ydpi="199"><tspan
+         sodipodi:role="line"
+         id="tspan4283-5"
+         x="-291.23846"
+         y="383.04449"
+         style="font-size:12.5px;line-height:1.25;font-family:sans-serif">Puntajes de predicción</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="29.788134"
+       y="33.762543"
+       id="text4209"><tspan
+         sodipodi:role="line"
+         id="tspan4211"
+         x="29.788134"
+         y="33.762543"
+         style="font-size:12.5px;line-height:1.25;font-family:sans-serif">a)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="208.07298"
+       y="33.772308"
+       id="text4209-5"><tspan
+         sodipodi:role="line"
+         id="tspan4211-3"
+         x="208.07298"
+         y="33.772308"
+         style="font-size:12.5px;line-height:1.25;font-family:sans-serif">b)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="397.54041"
+       y="33.762543"
+       id="text4209-56"><tspan
+         sodipodi:role="line"
+         id="tspan4211-2"
+         x="397.54041"
+         y="33.762543"
+         style="font-size:12.5px;line-height:1.25;font-family:sans-serif">c)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="574.89111"
+       y="33.772308"
+       id="text4209-9"><tspan
+         sodipodi:role="line"
+         id="tspan4211-1"
+         x="574.89111"
+         y="33.772308"
+         style="font-size:12.5px;line-height:1.25;font-family:sans-serif">d)</tspan></text>
+  </g>
+</svg>
