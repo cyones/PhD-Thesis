@@ -16,7 +16,6 @@
 \newgeometry{top=3cm,bottom=2cm,left=3cm,right=3cm}
 
 \newcommand*\Bell{\ensuremath{\boldsymbol\ell}}
-
 \renewcommand{\appendixtocname}{Ap\'endices}
 \renewcommand{\appendixpagename}{Ap\'endices}
 
@@ -26,18 +25,25 @@
 \input{tex/caratula.tex}
 \input{tex/segundahoja.tex}
 \input{tex/declaracion.tex}
+\input{tex/compilacion.tex}
 
 \tableofcontents
+
+\renewcommand{\listtablename}{\'Indice de tablas}
+
 \listoftables
 \listoffigures
+
 \input{tex/resumen.tex}
 
 \mainmatter
+
 \input{tex/introduccion.tex}
 \input{tex/objetivos.tex}
 \input{tex/metodologia.tex}
 \input{tex/resultados.tex}
 \input{tex/conclusiones.tex}
+\input{tex/publicaciones.tex}
 
 \backmatter
 \newpage

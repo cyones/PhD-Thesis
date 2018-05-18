@@ -1,4 +1,4 @@
-\chapter{Metodología}
+\chapter{Métodos propuestos}
 Siguiendo las ideas presentadas previamente, en la Figura 2 se presenta la metodología general diseñada para la clasificación y predicción de nuevos
 microARNs. La metodología o proceso consiste en tres etapas, en primer lugar se deben extraer todas las subcadenas del genoma que tengan una estructura
 secundaria similar a la de un pre-miARN. Luego, a estas secuencias candidatas se les extraen características para convertirlas en vectores numéricos,
@@ -67,7 +67,7 @@ flexibilidad en el proceso. Las reglas que se utilizan para elegir el punto de c
 		con menor NMFE. Cuanto menor es la longitud de la secuencia (independientemente del emparejamiento), mayor es la NMFE.
 \end{itemize}
 
-\subsection{Filtrado de repetidas}
+\subsection{Filtrado}
 
 Se eliminan las secuencias repetidas para evitar costo computacional extra en las siguientes etapas. Estas secuencias repetidas además perturban los
 resultados de los algoritmos de predicción utilizados en la última etapa, ya que cada repetición aumenta la “importancia” que se le da a una secuencia.

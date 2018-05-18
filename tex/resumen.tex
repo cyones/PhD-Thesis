@@ -7,32 +7,25 @@
 \end{center}
 \vspace{1cm}
 
-Los microARN (miARN) son un grupo de pequeñas secuencias de ácido ribonucleico (ARN) no codificante que desempeñan un papel muy importante en la
+La predicción computacional de secuencia de miARN es un problema de clasificación que presenta interesantes desafíos desde el punto de vista del
+aprendizaje automático. Los microARN (miARN) son un grupo de pequeñas secuencias de ácido ribonucleico (ARN) no codificante que desempeñan un papel muy importante en la
 regulación génica. En los últimos años, se han desarrollado una gran cantidad de métodos que intentan detectar nuevos miARNs utilizando sólo información
-secuencial, es decir, sin medir niveles de expresión. El primer paso en estos métodos generalmente consiste en extraer del genoma subcadenas que cumplan con
-ciertos requerimientos estructurales. En segundo lugar se extraen características numéricas de estas subcadenas para finalmente usar aprendizaje maquinal
-para predecir cuáles probablemente contengan miARN. Existen varias deficiencias en las metodologías propuestas. En primer lugar, muy poco se ha tratado el
-problema de la extracción de subcadenas del genoma completo. Este paso normalmente desatendido es muy importante ya que: i) los miARNs que se pierdan en esta
-etapa no se podrán recuperar en etapas posteriores y ii) definir correctamente los límites de las subcadenas extraídas es muy importante para que los
-algoritmos de aprendizaje maquinal generen predicciones correctas. Por otro lado, en paralelo con los métodos de predicción de miARN se han propuesto una gran
-cantidad de características para representar numéricamente las subcadenas de ARN. Algunas de estas características se pueden calcular con distintas
-herramientas, pero estas se desarrollaron con distintos lenguajes de programación y presentan interfaces muy variadas (línea de comandos, web, etc.). Para
-algunas características directamente no se cuenta con herramientas de acceso libre. Finalmente, la mayoría de los métodos actuales usan aprendizaje
+de estructura y secuencia, es decir, sin medir niveles de expresión. El primer paso en estos métodos generalmente consiste en extraer del genoma subcadenas
+de nucleótidos que cumplan con ciertos requerimientos estructurales. En segundo lugar se extraen características numéricas de estas subcadenas para finalmente
+usar aprendizaje maquinal para predecir cuáles probablemente contengan miARN. Por otro lado, en paralelo con los métodos de predicción de miARN se han propuesto
+una gran cantidad de características para representar numéricamente las subcadenas de ARN. Finalmente, la mayoría de los métodos actuales usan aprendizaje
 supervisado para la etapa de predicción. Este tipo de métodos tienen importantes limitaciones prácticas cuando deben aplicarse a tareas de predicción real.
 Existe el desafío de lidiar con un número escaso de ejemplos de pre-miARN positivos. Además, es muy difícil construir un buen conjunto de
 ejemplos negativos para representar el espectro completo de secuencias no miARN. Por otro lado, en cualquier genoma, existe un enorme desequilibrio de clase
 ($1:10000$) que es bien conocido por afectar particularmente a los clasificadores supervisados.
 
 Para permitir predicciones precisas y rápidas de nuevos miARNs en genomas completos, en esta tesis se realizaron aportas en las tres etapas del proceso de predicción de miARN.
-En primer lugar, se desarrollo una metodología para extraer subcadenas del genomas completo que cumplan con los requerimientos mínimos para ser candidatas a
+En primer lugar, se desarrolló una herramienta para extraer subcadenas del genomas completo que cumplan con los requerimientos mínimos para ser potenciales pre-miARNs
 miARN. En segundo lugar, se desarrollo una herramienta que permite calcular la mayoría de las características utilizadas para predicciones de miARN en el estado
-del arte. La tercer contribución consiste en un algoritmo novedoso de aprendizaje maquinal semi-supervisado que permite realizar predicciones a partir de muy pocos
-ejemplos. Este tipo de aprendizaje aprovecha la información provista por las subcadenas desconocidas (sobre las que se desea generar predicciones)
+del arte. La tercer y principal contribución consiste en un algoritmo novedoso de aprendizaje maquinal semi-supervisado que permite realizar predicciones a partir de muy pocos
+ejemplos . Este tipo de aprendizaje aprovecha la información provista por las subcadenas desconocidas (sobre las que se desea generar predicciones)
 para mejorar las tasas de predicción. Esta información extra permite atenuar el efecto del número reducido de ejemplos etiquetados y la pobre
-representatividad de las clases.
+representatividad de las clases. Cada herramienta diseñada fue comparada contra el estado del arte, obteniendo mejores tasas de desempeño y menores tiempos de ejecución.
 
-Se comparó el método propuesto de extracción de secuencias tipo horquilla con el único método disponible para tal tarea en la actualidad en 6 especies y se obtuvo
-en todos los casos mejores resultados, tanto en cantidad de horquillas como en cantidad de pre-miARNs conocidos encontrados. Se realizaron pruebas para validar los
-algoritmos de extracción de características, obteniendo resultados correctos en todos los casos. Finalmente, se realizaron pruebas del método de aprendizaje maquinal
-propuesto con datos genómicos de tres especies modelo, con más de un millón de subcadenas cada una. Se hicieron comparaciones con una gran cantidad de métodos del estado del arte,
-obteniéndose mejores tasas de predicción y tiempos de ejecución más cortos.
+\newpage
+\thispagestyle{empty}
