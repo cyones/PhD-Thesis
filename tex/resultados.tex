@@ -1,11 +1,8 @@
 \chapter{Resultados} \label{sec:results}
 
-Siguiendo la estructura de la sección métodos, esta sección también se divide en tres subsecciones que presentan los resultados de cada una de las etapas
-del proceso de predicción de pre-miARNs.
-
 \section{Procesamiento de secuencias de ARN de tipo tallo-horquilla}
 
-Se ha desarrollado una herramienta llamada Hextractor, simple e integrada, que automáticamente extrae y pliega todas las secuencias de horquilla a partir de
+Se ha desarrollado una herramienta llamada HextractoR, simple e integrada, que automáticamente extrae y pliega todas las secuencias de horquilla a partir de
 datos brutos del genoma completo. El método propuesto aprovecha los últimos avances en la predicción de estructuras secundarias. Al procesar grandes
 ventanas superpuestas, no se pierden ni se cortan de manera inapropiada las horquillas. Permite procesar genomas en paralelo y con pocos requisitos de memoria,
 ya que puede dividir automáticamente archivos fasta demasiado grandes.
@@ -13,16 +10,16 @@ ya que puede dividir automáticamente archivos fasta demasiado grandes.
 Se procesaron varios genomas y los resultados se compararon con los del programa mirCheck de EMBOSS \citep{olson2002emboss}. La Tabla~\ref{tab:hextractor} muestra los
 resultados del procesamiento de 6 genomas completos: \textit{Homo sapiens}, \textit{Arabidopsis thaliana}, \textit{Danio rerio}, \textit{Anopheles gambiae} y
 \textit{Caenorhabditis elegans}, además de otra especie menos estudiada: \textit{Echinococcus multilocularis}. Para cada uno, se muestra el número de
-secuencias extraídas con mirCheck y Hextractor, en la segunda y tercera columna, respectivamente. Con respecto a los pre-miARNs en particular se informa, en
+secuencias extraídas con mirCheck y HextractoR, en la segunda y tercera columna, respectivamente. Con respecto a los pre-miARNs en particular se informa, en
 cada genoma analizado, en la cuarta columna de la tabla el número de pre-miARNs conocidos (de acuerdo con miRBase 21) para las 6 especies. La proporción de
 aquellos encontrados por los métodos comparativos se muestra en las dos últimas columnas. Se puede ver claramente que en todos los casos, el rendimiento de
-Hextractor es superior. Además, en muchos casos, el 100 \% de los pre-miARNs conocidos se extraen correctamente.
+HextractoR es superior. Además, en muchos casos, el 100 \% de los pre-miARNs conocidos se extraen correctamente.
 
 Las diferencias en cantidad de pre-miARNs encontrados que muestra la Tabla~\ref{tab:hextractor} se pueden deber a varios motivos. En primer lugar, como se ve en
-la segunda y tercer columna, Hextractor consigue capturar más horquillas que mirCheck. Al utilizar ventanas solapadas de un tamaño varias veces mayor al de
-una horquilla para recorrer el genoma, Hextractor consigue capturar cualquier horquilla. MirCheck se podría configurar para que utilice ventanas con una mayor
+la segunda y tercer columna, HextractoR consigue capturar más horquillas que mirCheck. Al utilizar ventanas solapadas de un tamaño varias veces mayor al de
+una horquilla para recorrer el genoma, HextractoR consigue capturar cualquier horquilla. MirCheck se podría configurar para que utilice ventanas con una mayor
 longitud, pero en ese caso descartaría la mayoría de las secuencias porque estas formarían estructuras con varios bucles y mirCheck no realiza el proceso de
-separación en horquillas como si lo hace Hextractor.
+separación en horquillas como si lo hace HextractoR.
 
 \begin{table}[t]
 	\centering
@@ -191,9 +188,9 @@ Para detectar los pre-miARNs conocidos se utilizó la base de datos mirBase v21.
 \textit{A. thaliana}, \textit{C. elegans}, \textit{A. gambiae}, respectivamente.
 Se extrajeron dos conjuntos de características de los tres genomas. El primero (FS1) es el mismo usado en la Sección ~\ref{sec:results}.1, para hacer una
 comparación justa con uno de los métodos. El segundo conjunto de características (FS2) es un conjunto ampliado compuesto por casi todas las características
-propuestas para la predicción pre-miARN en la literatura. FS2 se calculó con miRNAfe \citep{yones2015mirnafe} y cada vector de característica resultó en 79
-elementos. Para obtener más información sobre los conjuntos de características, consulte la Sección~S4 del Anexo~\ref{sec:mirnass}. Se utilizó un esquema de
-validación cruzada (CV) de 10 veces para medir el rendimiento de miARNs con curvas ROC promediadas.
+propuestas para la predicción pre-miARN en la literatura. FS2 se calculó con miRNAfe y cada vector de característica resultó en 79 elementos. Para obtener más
+información sobre los conjuntos de características, consulte la Sección~S4 del Anexo~\ref{sec:mirnass}. Se utilizó un esquema de validación cruzada (CV) de 10
+veces para medir el rendimiento de miARNs con curvas ROC promediadas.
 Muchos algoritmos de predicción pre-miARN se probaron en estos conjuntos de datos para comparar su rendimiento con miRNAss. En total se han probado once
 predictores, pero la mayoría han fallado con datos genómicos o sus servidores no funcionan. Los cinco predictores que se pudieron aplicar a genomas completos
 fueron HuntMi, Mirident \citep{liu2012integrated}, HHMMiR \citep{kadri2009hhmmir}, MiRPara \citep{wu2011mirpara} y miR-BAG \citep{jha2012mirbag}. Los primeros

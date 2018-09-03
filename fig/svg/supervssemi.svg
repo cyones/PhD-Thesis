@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="31.75931cm"
-   height="5.4229126cm"
+   width="32.9202cm"
+   height="6.4570522cm"
    id="svg2"
    version="1.1"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
@@ -18,7 +18,7 @@
    inkscape:export-filename="/home/cyones/Drive/CONICET/Trabajos/miRNAss - Bioinformatics/res/semivssuper.png"
    inkscape:export-xdpi="399.9436"
    inkscape:export-ydpi="399.9436"
-   viewBox="0 0 1125.3298 192.15045">
+   viewBox="0 0 1166.4637 228.79319">
   <defs
      id="defs4">
     <marker
@@ -884,15 +884,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.59669537"
-     inkscape:cx="669.72723"
-     inkscape:cy="-187.17544"
+     inkscape:cx="715.51454"
+     inkscape:cy="238.98704"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="871"
+     inkscape:window-width="1920"
+     inkscape:window-height="1044"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="36"
      inkscape:window-maximized="1"
      inkscape:snap-bbox="true"
      inkscape:object-paths="true"
@@ -933,10 +933,10 @@
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-62.434977,-164.78244)">
+     transform="translate(-21.243012,-164.71317)">
     <g
        id="g5119"
-       transform="matrix(0.90682768,0,0,0.79493581,4.0559654,114.90821)">
+       transform="matrix(0.90673745,0,0,0.9465286,-37.130191,105.32802)">
       <ellipse
          id="path4499-8-8-5-2"
          style="fill:#99ff99;fill-opacity:1;stroke:#000000;stroke-width:1.52750945;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -1348,7 +1348,7 @@
     </g>
     <g
        id="g5180"
-       transform="matrix(0.90682768,0,0,0.79493581,-17.980092,114.90821)">
+       transform="matrix(0.90673745,0,0,0.9465286,-45.645294,105.32802)">
       <ellipse
          id="path4499-8-8-5-9-5"
          style="fill:#99ff99;fill-opacity:1;stroke:#000000;stroke-width:1.52750945;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -1760,7 +1760,7 @@
     </g>
     <g
        id="g5302"
-       transform="matrix(0.90682768,0,0,0.79493581,567.0664,-98.532521)">
+       transform="matrix(0.90673745,0,0,0.9465286,552.86107,-148.81546)">
       <path
          sodipodi:nodetypes="caaaaaaaaacccc"
          inkscape:connector-curvature="0"
@@ -2214,7 +2214,7 @@
     </g>
     <g
        id="g5241"
-       transform="matrix(0.90682768,0,0,0.79493581,544.34001,-97.938744)">
+       transform="matrix(0.90673745,0,0,0.9465286,544.346,-148.10845)">
       <ellipse
          id="path4499-8-8-5-9-5-6"
          style="fill:#99ff99;fill-opacity:1;stroke:#000000;stroke-width:1.52750945;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"

@@ -2,17 +2,25 @@
 Siguiendo las ideas presentadas previamente, en la Figura 2 se presenta la metodología general diseñada para la clasificación y predicción de nuevos
 microARNs. La metodología o proceso consiste en tres etapas, en primer lugar se deben extraer todas las subcadenas del genoma que tengan una estructura
 secundaria similar a la de un pre-miARN. Luego, a estas secuencias candidatas se les extraen características para convertirlas en vectores numéricos,
-procesables con métodos de aprendizaje maquinal. En paralelo, se comparan todas las subcadenas con los pre-miARNs de conocidos (tomados de la base de datos mirBase)
+procesables con métodos de aprendizaje maquinal. En paralelo, se comparan todas las subcadenas con los pre-miARNs conocidos (tomados de la base de datos mirBase)
 para marcar los ejemplos positivos. Finalmente, se obtienen predicciones para las secuencias no etiquetadas utilizando un algoritmo de aprendizaje maquinal
 semi-supervisado. En las siguientes subsecciones se describe con más detalle cada etapa del proceso.
 
 \section{Procesamiento de secuencias de ARN de tipo tallo-horquilla}
-Como se mencionó antes, los pre-miARNs se pliegan en estructuras secundarias tipo tallo- horquilla. Estas secuencias tienen una longitud promedio que depende
+Como se mencionó antes, los pre-miARNs se pliegan en estructuras secundarias tipo tallo-horquilla. Estas secuencias tienen una longitud promedio que depende
 de la especie, y un nivel de emparejamiento relativamente alto. Estas características especiales de los pre-miARNs, además de ser útiles para una primer
 etapa de filtrado, se pueden utilizar para cortar el genoma completo en subcadenas que pueden ser procesadas más fácilmente por las siguientes etapas. El
 objetivo de esta etapa es entonces extraer todas las secuencias tipo tallo-horquilla de un genoma cortando en los puntos donde se obtienen las estructuras
-secundarias con la mayor estabilidad termodinámica posible. Para ello se sigue el esquema de pasos presentado en la Figura~\ref{fig:hextractor}. A
-continuación se detalla cada paso de este proceso:
+secundarias con la mayor estabilidad termodinámica posible.
+
+Para ello, se predice la estructura secundaria de varios segmentos superpuestos de una longitud más larga que la longitud media de las secuencias de la
+especies de interés, asegurándose de que nada se pierda ni se corte de manera inapropiada. La longitud de la ventana de corte se puede configurar para
+definir el tamaño máximo que tendrán los tallos encontrados (también se encontrarán tallos más pequeños). Opcionalmente, los archivos FASTA que contienen
+secuencias conocidas se pueden cargar y usar para dividir los bucles madre de salida en varios archivos de salida FASTA, de acuerdo con su tipo. Si no se
+proporciona ningún archivo de filtro, HextractoR genera solo un archivo FASTA con todas las horquillas. Si se proporcionan dos archivos de filtro, por ejemplo,
+con pre-miRNAs conocidos y otros con secuencias no miARN conocidas, HextractoR genera tres archivos FASTA: uno para cada archivo de filtrado pasado a HextractoR
+con las secuencias que coinciden según BLAST \ citep {altschul1990basic} con secuencias conocidas; y otro con los bucles del tallo que no coinciden. Los pasos
+de procesamiento de HextractoR (ver Figura\ref{fig:esquema}) se explican en detalle en las siguientes secciones.
 
 \begin{figure}[h]
 	\centering
@@ -23,20 +31,13 @@ continuación se detalla cada paso de este proceso:
 
 \subsection{Ventaneo del genoma}
 
-Se comienza cortando el genoma completo en ventanas solapadas de una longitud varias veces mayor (~500 nt.) a la de un pre-miARN promedio. La ventana debe ser
+Se comienza cortando el genoma completo en ventanas solapadas de una longitud varias veces mayor (500 nt.) a la de un pre-miARN promedio. La ventana debe ser
 lo suficientemente larga para poder capturar la horquilla completa pero además para que se tenga en cuenta el entorno de cualquier posible horquilla al
 estimar la estructura secundaria. Esto último es muy importante ya que los resultados de estimar la estructura secundaria se ven muy afectados por el entorno
 de la secuencia. Por ejemplo, sin considerar el entorno de una secuencia, la estructura secundaria estimada puede presentar una estabilidad menor a la que se
 formaría si se habría considerado el entorno.
 
 \subsection{Plegado y poda}
-
-\begin{figure}[t]
-	\centering
-	\includegraphics[width=\textwidth]{fig/hextractor.eps}
-	\caption[Extracción de secuencias tipo tallo-horquilla]{proceso de extracción de secuencias tipo tallo-horquilla del genoma completo.}
-	\label{fig:hextractor}
-\end{figure}
 
 Se predice la estructura secundaria que formaría cada una de las ventanas al plegarse. Para ello se utiliza el algoritmo de mínima energía libre
 \citep{zuker1981optimal}. Este algoritmo utiliza programación dinámica para encontrar la estructura secundaria que minimiza la energía liberada. Dado que
@@ -54,6 +55,13 @@ sus siglas en ingles \textit{Normalized Minimum Free Energy}), que se sabe es mu
 límites en la longitud de la secuencia. La NMFE es la energía termodinámica que libera la secuencia al plegarse, por lo tanto, cuanto mayor es la energía
 que se libera más estable es la estructura secundaria.
 
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\textwidth]{fig/hextractor.eps}
+	\caption[Extracción de secuencias tipo tallo-horquilla]{proceso de extracción de secuencias tipo tallo-horquilla del genoma completo.}
+	\label{fig:hextractor}
+\end{figure}
+
 Si bien se podrían encontrar de forma óptima los puntos de corte óptimo, re-estimando la estructura secundaria para todos los cortes posibles, se decidió
 utilizar un conjunto de reglas que aproximan esta solución. De esta forma, además de acelerar en gran medida el procesamiento, se logra una mayor
 flexibilidad en el proceso. Las reglas que se utilizan para elegir el punto de corte son:
@@ -67,43 +75,33 @@ flexibilidad en el proceso. Las reglas que se utilizan para elegir el punto de c
 		con menor NMFE. Cuanto menor es la longitud de la secuencia (independientemente del emparejamiento), mayor es la NMFE.
 \end{itemize}
 
-\subsection{Filtrado}
+\subsection{Filtrado de repetidas}
 
-Se eliminan las secuencias repetidas para evitar costo computacional extra en las siguientes etapas. Estas secuencias repetidas además perturban los
+Las secuencias repetidas se eliminan para evitar costo computacional extra en las siguientes etapas. Estas secuencias repetidas además perturban los
 resultados de los algoritmos de predicción utilizados en la última etapa, ya que cada repetición aumenta la “importancia” que se le da a una secuencia.
-Las repeticiones pueden aparecer debido al ventaneo solapado, o ser repeticiones del genoma. Cada una de estos tipos de repetición se elimina siguiendo una
-estrategia diferente:
-
-\begin{itemize}
-	\item Ventana solapada: Dado que la ventana se mueve de forma solapada, es posible que una estructura secundaría sea capturada más de una vez. Estas
-		repeticiones aparecen de forma consecutiva y son secuencias casi idénticas. Lo único que puede variar es la longitud dado que una horquilla
-		puede caer en uno
-		de los extremos de la ventana, generando una horquilla más corta. Para eliminarlas se realiza una comparación de cada secuencia con las
-		últimas secuencias
-		extraídas. Si una de las secuencias contiene a la otra, la más corta se elimina.
-	\item Repeticiones en el genoma: Para eliminar las repeticiones se ordenan lexicográficamente y se compara caractér a caractér cada secuencia con la
-		siguiente, encontrando de esta forma todas las repeticiones.
-\end{itemize}
-
-Finalmente las secuencias extraídas se comparan con secuencias de distintas bases de datos utilizando BLAST y se las separa en distintos archivos de salida.
+ Dado que la ventana se mueve de forma solapada, es posible que una estructura secundaría sea capturada más de una vez. Estas repeticiones aparecen de forma
+ consecutiva y son secuencias casi idénticas. Lo único que puede variar es la longitud dado que una horquilla puede caer en uno de los extremos de la ventana,
+ generando una horquilla más corta. Para eliminarlas se realiza una comparación de cada secuencia con las últimas secuencias extraídas. Si una de las secuencias
+ contiene a la otra, la más corta se elimina.
 
 \section{Extracción de características}
 
 La extracción de características de pre-miARN consiste en convertir las secuencias de nucleótidos (representadas como cadenas de caracteres) en vectores
 numéricos. De esta manera se pueden aplicar técnicas de aprendizaje maquinal para lograr separar las secuencias pre-miARN de las que no lo son. Como antes se
-expresó, se han presentado muchas características que pueden usarse para representar secuencias de ARN \cite{Lopes2014}, pero la variedad de herramientas
-para extraerlas son un problema que dificulta su utilización. Estas tienen diferentes interfaces de acceso (web, línea de comandos, interfaz gráfica, etc.)
-y no siempre son de libre acceso. Para resolver este problema se creó una biblioteca que implementa estos procesos de extracción unificada
-de acceso a todos los procesos de extracción de características publicados en la literatura en los últimos 10 años. Esta herramienta puede extraer características
-de la mayoría de los métodos de predicción de miARN de los últimos años: Triplet-SVM \citep{xue2005classification}, RNAmicro \citep{hertel2006hairpins},
-BayesMiRNAfind \citep{yousef2006combining}, MiRFinder \citep{huang2007mirfinder}, MiPred \citep{jiang2007mipred}, miRRim \citep{terai2007mirrim}, microPred
-\citep{batuwita2009micropred}, miRanalyzer \citep{hackenberg2009miranalyzer}, MiRenSVM \citep{ding2010mirensvm} y miPredGA \citep{xuan2011genetic}. La
-biblioteca se construyó de forma modular, para facilitar el proceso de agregar nuevos algoritmos de extracción de características en el futuro. Además de
-la biblioteca, se creó una interfaz web para simplificar el acceso a usuarios del dominio de aplicación sin conocimientos de programación.
-Tanto la biblioteca como la versión web pueden calcular hasta 80 características donde muchas son matrices multidimensionales. Las
-características se han dividido en seis grupos predefinidos: secuencia primaria, estructura secundaria, estabilidad termodinámica, estabilidad estadística,
-conservación entre genomas de diferentes especies y análisis de subcadenas de las secuencias. En las próximas secciones se detalla en qué consiste cada grupo
-de características. Una lista completa de las características descritas con mayor detalle se presentan en el Anexo~\ref{sec:mirnafe}.
+expresó, se han presentado muchas características que pueden usarse para representar secuencias de ARN \citep{Lopes2014}, pero la variedad de herramientas para
+extraerlas son un problema que dificulta su utilización. Estas tienen diferentes interfaces de acceso (web, línea de comandos, interfaz gráfica, etc.) y no
+siempre son de libre acceso. Para resolver este problema se creó una biblioteca que implementa estos procesos de extracción unificada de acceso a todos los
+procesos de extracción de características publicados en la literatura en los últimos 10 años. Esta herramienta puede extraer características de la mayoría de
+los métodos de predicción de miARN de los últimos años: Triplet-SVM \citep{xue2005classification}, RNAmicro \citep{hertel2006hairpins}, BayesMiRNAfind
+\citep{yousef2006combining}, MiRFinder \citep{huang2007mirfinder}, MiPred \citep{jiang2007mipred}, miRRim \citep{terai2007mirrim}, microPred
+\citep{batuwita2009micropred}, miRanalyzer \citep{hackenberg2009miranalyzer}, MiRenSVM \citep{ding2010mirensvm} y miPredGA \citep{xuan2011genetic}.
+
+La biblioteca, llamada miRNAfe, se construyó de forma modular para facilitar el proceso de agregar nuevos algoritmos de extracción de características en el
+futuro. Además de la biblioteca, se creó una interfaz web para simplificar el acceso a usuarios del dominio de aplicación sin conocimientos de programación.
+Tanto la biblioteca como la versión web pueden calcular hasta 80 características donde muchas son matrices multidimensionales. Las características se han
+dividido en seis grupos predefinidos: secuencia primaria, estructura secundaria, estabilidad termodinámica, estabilidad estadística, conservación entre genomas
+de diferentes especies y análisis de subcadenas de las secuencias. En las próximas secciones se detalla en qué consiste cada grupo de características. Una lista
+completa de las características descritas con mayor detalle se presentan en el Anexo~\ref{sec:mirnafe}.
 
 
 \subsection{Secuencia}
@@ -142,14 +140,14 @@ maduros, seleccionados como la región de 22 nucleótidos donde el apareamiento 
 frecuencia de no emparejamiento, las frecuencias de borrado e inserción y la simetría de los bucles abombados, respectivamente.
 
 Otro tipo de características se relaciona con estructuras llamadas tallos, que son motivos estructurales que contienen más de tres pares de bases contiguas
-\citep{ng2007novo}. Estas características son el número de tallos, la proporción de cada posible par de bases por tallo, el número promedio de pares de bases por
-tallo y la longitud del tallo más largo. El resto de las características son la longitud de la región del tallo (la cantidad de nucleótidos de la horquilla
-sin contar los que se encuentran en el bucle principal, no confundir con los tallos de \cite{ng2007novo}), longitud del bucle terminal, número de bucles, número de
-bultos, longitud de bucle más larga, número de bucles simétricos y asimétricos, nucleótidos en bucles simétricos y asimétricos, región simétrica más
-larga, longitud promedio de bucles simétricos, longitud promedio de bucles asimétricos, cantidad de bultos y bucles de longitud $ 1,2, ..., 7>$, número de
-pares de bases, proporción de pares de bases, proporción de pares de bases ajustada y $G+C_{contenido}$ en el bucle terminal \citep{Lopes2014}. Finalmente,
-la biblioteca permite calcular el recuento de lecturas a partir de los datos de RNAseq. Esta característica necesita que el usuario proporcione un archivo adicional
-con lecturas, que se alinea con las secuencias analizadas y cuenta las correspondencias correspondientes.
+\citep{ng2007novo}. Estas características son el número de tallos, la proporción de cada posible par de bases por tallo, el número promedio de pares de bases
+por tallo y la longitud del tallo más largo. El resto de las características son la longitud de la región del tallo (la cantidad de nucleótidos de la horquilla
+sin contar los que se encuentran en el bucle principal, no confundir con los tallos de \cite{ng2007novo}), longitud del bucle terminal, número de bucles, número
+de bultos, longitud de bucle más larga, número de bucles simétricos y asimétricos, nucleótidos en bucles simétricos y asimétricos, región simétrica más larga,
+longitud promedio de bucles simétricos, longitud promedio de bucles asimétricos, cantidad de bultos y bucles de longitud $ 1,2, ..., 6$ y mayor que $7$, número
+de pares de bases, proporción de pares de bases, proporción de pares de bases ajustada y $G+C_{contenido}$ en el bucle terminal \citep{Lopes2014}. Finalmente,
+la biblioteca permite calcular el recuento de lecturas a partir de los datos de RNAseq. Esta característica necesita que el usuario proporcione un archivo
+adicional con lecturas, que se alinea con las secuencias analizadas y cuenta las correspondencias correspondientes.
 
 \subsection{Estabilidad termodinámica}
 
@@ -190,17 +188,17 @@ elegir qué método de intercambio usar). Utilizando las secuencias generadas, l
 	z = \frac{x-\mu}{\sigma},
 \end{equation}
 
-\noindent donde $x$ es el valor original de alguna característica relacionada con la estabilidad, $\mu$ es la media y $\sigma$ es la desviación estándar de
-la población de secuencias generada aleatoriamente. Este puntaje representa cuántas desviaciones estándar un valor está por encima de la media de la
-población. Por lo tanto, un puntaje z negativo indica una secuencia que es estadísticamente más estable que la media de la población. Otra estadística
-utilizada para medir la estabilidad de la secuencia en comparación con secuencias aleatorias es el valor $p$. Se calcula como la proporción de secuencias
-aleatorias que son más estables que la secuencia analizada. Por lo tanto, un bajo valor de $p$ indica que la secuencia analizada es una de las secuencias más
-estables generadas con esa proporción de nucleótidos / dinucleótidos. Las medidas de estabilidad que se pueden normalizar con z-score son: $ MFE $ ($ zMFE
-$), $ EFE $ ($ zEFE $), $ MFE $ ($ zG $) ajustado, entropía de Shannon ($ zQ $), propensión de par de bases ($ zP $) \citep{ng2007novo} y distancia de pares de
-bases ($ zD $) \citep{ding2010mirensvm}. El valor $p$ se puede usar para normalizar $ MFE $ ($ pMFE $) \citep{bonnet2004evidence} y $ EFE $ ($ pEFE $) \citep{ding2010mirensvm}. Aunque
-el z-score y el $p$-value son similares, a menudo se usan juntas en predicción ya que pueden tomar valores muy diferentes \citep{ding2010mirensvm}. En resumen,
-se pueden calcular 8 características en este grupo. Además se puede especificar el método de mezcla (preservación de la composición de nucleótidos o
-dinucleótidos) y el número de secuencias aleatorias generadas.
+\noindent donde $x$ es el valor original de alguna característica relacionada con la estabilidad, $\mu$ es la media y $\sigma$ es la desviación estándar de la
+población de secuencias generada aleatoriamente. Este puntaje representa cuántas desviaciones estándar un valor está por encima de la media de la población. Por
+lo tanto, un puntaje z negativo indica una secuencia que es estadísticamente más estable que la media de la población. Otra estadística utilizada para medir la
+estabilidad de la secuencia en comparación con secuencias aleatorias es el valor $p$. Se calcula como la proporción de secuencias aleatorias que son más
+estables que la secuencia analizada. Por lo tanto, un bajo valor de $p$ indica que la secuencia analizada es una de las secuencias más estables generadas con
+esa proporción de nucleótidos (o dinucleótidos). Las medidas de estabilidad que se pueden normalizar con z-score son: $ MFE $ ($ zMFE $), $ EFE $ ($ zEFE $), $
+MFE $ ($ zG $) ajustado, entropía de Shannon ($ zQ $), propensión de par de bases ($ zP $) \citep{ng2007novo} y distancia de pares de bases ($ zD $)
+\citep{ding2010mirensvm}. El valor $p$ se puede usar para normalizar $ MFE $ ($ pMFE $) \citep{bonnet2004evidence} y $ EFE $ ($ pEFE $)
+\citep{ding2010mirensvm}. Aunque el z-score y el $p$-value son similares, a menudo se usan juntas en predicción ya que pueden tomar valores muy diferentes
+\citep{ding2010mirensvm}. En resumen, se pueden calcular 8 características en este grupo. Además se puede especificar el método de mezcla (preservación de la
+composición de nucleótidos o dinucleótidos) y el número de secuencias aleatorias generadas.
 
 \subsection{Conservación filogenética}
 
@@ -217,7 +215,7 @@ conservación. Esta es la característica más compleja para obtener \citep{tera
 dimensión de tiempo (sobre las ramas del árbol de evolución) y el otro en dimensión espacial (sobre la secuencia) . Se pueden extraer un total de 14
 características en este grupo, que se describen en detalle en el Anexo~\ref{sec:mirnafe}.
 
-\subsection{Análisis de subcadenas de 22-nt}
+\subsection{Análisis de subcadenas de 22 nt}
 
 Estas características se calculan en todas las subcadenas de 22 nt dentro de una secuencia determinada. Se basan en el hecho de que si una secuencia es un
 pre-miARN, una de las subcadenas analizadas tiene que ser el miARN maduro y las características calculadas deben capturar sus particularidades. Como
@@ -227,7 +225,7 @@ subcadena \citep{lim2003}, que es la suma de probabilidades de emparejamiento de
 suma de probabilidades de emparejamiento de bases en la estructura secundaria sin las probabilidades de los nucleótidos de la subcadena; la simetría de
 bultos, como la diferencia entre la cantidad de bases no emparejadas en cada brazo de la subcadena; y la distancia desde la subcadena hasta el bucle terminal.
 
-\section{Predicción de pre-miARNs}
+\section{Clasificación de pre-miARNs}
 
 En esta etapa se utilizan pre-miARNs conocidos del genoma de la especie de interés para entrenar un clasificador que luego realizará predicciones sobre otras
 secuencias de ARN, sobre las cuales no se  conoce su función. Las secuencias de pre-miARN utilizadas como ejemplos para el entrenamiento pueden ser tomadas de
@@ -249,8 +247,8 @@ describe el proceso general.
 \begin{figure}[tpb]
 	\centering
 	\includegraphics[width=\linewidth]{fig/workflow.eps}
-	\caption[Evolución del grafo]{evolución del grafo, el vector de etiquetas y el vector de puntajes de predicción en los 4 pasos del método propuesto: a) Construcción de grafo; b)
-	inicialización de conjunto negativo; c) Estimación de puntajes de predicción; d) optimización del umbral.}
+	\caption[Evolución del grafo]{evolución simplificada del grafo, el vector de etiquetas y el vector de puntajes de predicción en los 4 pasos del método
+	propuesto: a) Construcción de grafo; b) inicialización de conjunto negativo; c) Estimación de puntajes de predicción; d) optimización del umbral.}
 	\label{fig:workflow}
 \end{figure}
 %****************************************************************************************

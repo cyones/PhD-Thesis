@@ -2,39 +2,44 @@
 \section{Aprendizaje automático semi-supervisado}
 
 El aprendizaje automático es un campo de las ciencias de la computación que intenta dotar a los sistemas informáticos de la capacidad de aumentar
-progresivamente su habilidad en una tarea específica, sin la necesidad de ser específicamente programados para tal tarea. Dentro de este campo podemos
-identificar dos grandes grupos de técnicas: las de aprendizaje supervisado y las de aprendizaje no supervisado. Las primeras utilizan un conjunto de datos que
-traen asociados una etiqueta de clase (que indica a qué clase pertenece el objeto) o valor de salida deseado. El proceso de aprendizaje consiste en generar un
-modelo que logre mapear los datos de entrada a los valores de salida deseados. El modelo además debe ser capaz de generalizar, es decir, generar salidas correctas
-cuando se alimente con datos no vistos durante el proceso de aprendizaje. Por otro lado, en el aprendizaje no supervisado el objetivo es generar modelos que
-descubran grupos o relaciones subyacentes en los datos sin utilizar ningún tipo de etiqueta o valor de salida esperado.
+progresivamente su habilidad en una tarea específica, sin la necesidad de ser específicamente programados para tal tarea \citep{samuel1959some}. Dentro de este
+campo podemos identificar dos grandes grupos de técnicas: las de aprendizaje supervisado y las de aprendizaje no supervisado. Las primeras utilizan un conjunto
+de datos que traen asociados una etiqueta de clase (que indica a qué clase pertenece el objeto) o valor de salida deseado. El proceso de aprendizaje consiste en
+generar un modelo que logre mapear los datos de entrada a los valores de salida deseados \citep{russell2016artificial}. El modelo además debe ser capaz de
+generalizar, es decir, generar salidas correctas cuando reciba como entrada datos no vistos durante el proceso de aprendizaje. Por otro lado, en el aprendizaje
+no supervisado el objetivo es generar modelos que descubran grupos o relaciones subyacentes en los datos sin utilizar ningún tipo de etiqueta o valor de salida
+esperado.
 
 Como punto intermedio entre los dos grupos de técnicas antes mencionados, recientemente apareció un nuevo grupo de algoritmos, llamados de aprendizaje
-semi-supervisado. Este tipo de algoritmos utiliza ejemplos etiquetados para aprender la distribución de las clases de la misma forma que los métodos de
-aprendizaje supervisado, pero además aprovecha ejemplos no etiquetados para mejorar las tasas de clasificación. Como los ejemplos no etiquetados proveen
-información extra sobre la distribución de los datos en el espacio de las características, este grupo de técnicas obtiene buenas tasas de clasificación en
-problemas donde la cantidad de datos etiquetados es muy baja o no es representativa de su clase \citep{chapelle2006semi}. En la Figura~\ref{fig:semivssuperv}
-podemos ver un ejemplo muy simple de como datos sin etiqueta pueden ayudar a reconocer los límites de las clases de interés.
+semi-supervisado \citep{chapelle2006semi}. Este tipo de algoritmos utiliza ejemplos etiquetados para aprender la distribución de las clases de la misma forma
+que los métodos de aprendizaje supervisado, pero además aprovecha ejemplos no etiquetados para modelar mejor el espacio de las características y así mejorar las
+tasas de clasificación. Como los ejemplos no etiquetados proveen información extra sobre la distribución de los datos en el espacio de las características, este
+grupo de técnicas obtiene buenas tasas de clasificación en problemas donde la cantidad de datos etiquetados es baja o no es representativa de su clase.  En la
+Figura~\ref{fig:semivssuperv} podemos ver un ejemplo muy simple de como datos sin etiqueta pueden ayudar a reconocer los límites de las clases de interés.
+En~\ref{fig:semivssuperv}.a vemos 4 ejemplos de entrenamiento de dos clases diferentes y la frontera de decisión que construiría un clasificador supervisado con
+estos datos de entrada. En el siguiente cuadro vemos que los datos de entrenamiento en realidad no eran representativos de sus clases por lo que la frontera de
+decisión falla al separarlas. Por otro lado, si se utiliza un esquema semi-supervisado (~\ref{fig:semivssuperv}.c) este aprovecha tanto los datos etiquetados
+como los no etiquetados para descubrir la distribución latente de los datos y de esta forma separar las dos clases satisfactoriamente.
 
-Durante la última década, una gran parte de las técnicas que se han desarrollado en el campo del aprendizaje semi-supervisado utiliza representaciones de
-los datos en forma de grafos. Estas técnicas representan cada dato como un nodo del grafo y una arista conecta dos nodos si son de alguna manera similares.
-Luego, utilizando los nodos etiquetados, se predicen etiquetas para el resto de los nodos. Estos métodos han mostrado buenas tasas de desempeño
-\citep{joachims2003transductive} y además son algoritmos muy escalables que, correctamente implementados, permiten el manejo de grandes volúmenes de datos.
+% Durante la última década, una gran parte de las técnicas que se han desarrollado en el campo del aprendizaje semi-supervisado utiliza representaciones de los
+% datos en forma de grafos. Estas técnicas representan cada dato como un nodo del grafo y una arista conecta dos nodos si son de alguna manera similares.  Luego,
+% utilizando los nodos etiquetados, se predicen etiquetas para el resto de los nodos. Estos métodos han mostrado buenas tasas de desempeño
+% \citep{joachims2003transductive} y además son algoritmos muy escalables que, correctamente implementados, permiten el manejo de grandes volúmenes de datos.
 
 Un concepto que está estrechamente relacionado con el aprendizaje semi-supervisado es el de aprendizaje transductivo. En esta configuración, los datos de
 entrenamiento se utilizan para hacer directamente inferencias en datos de prueba. A diferencia de la mayoría de los métodos inductivos, donde el algoritmo
 tiene dos etapas (entrenamiento e inferencia), los métodos transductivos tienen solo una etapa, como se muestra en la figura ~\ref{fig:schemes}. En el esquema
 inductivo (a), el algoritmo de aprendizaje utiliza datos de entrenamiento etiquetados para ajustar un modelo. En la segunda etapa, el modelo ya ajustado se usa
-para hacer predicciones sobre datos nuevos no vistos durante el entrenamiento. En el esquema transductivo (b), tanto los datos etiquetados como los no
-etiquetados se procesan juntos, en la misma etapa. Como resultado, se obtiene una inferencia sobre los datos no etiquetadas, pero ninguna función de
-decisión, modelo entrenado o regla de clasificación se devuelve como resultado. Cabe señalar que la validación de cualquier método de transducción es
-bastante diferente de una estándar (inductiva). Dado que el entrenamiento y la predicción se combinan en una etapa, tanto los datos de entrenamiento como los
-de prueba se proporcionan al algoritmo, pero los segundos sin etiquetas. Este tipo especial de validación se utiliza en todos los algoritmos transductivos
-\citep{chapelle2006semi}, donde las etiquetas de los casos de prueba nunca se utilizan en ningún paso de la etapa de predicción.
+para hacer predicciones sobre datos nuevos (no vistos durante el entrenamiento). En el esquema transductivo (b), tanto los datos etiquetados como los no
+etiquetados se procesan juntos, en la misma etapa. Como resultado, se obtienen etiquetas para los datos no etiquetados, pero ninguna función de decisión, modelo
+entrenado o regla de clasificación. Cabe señalar que la validación de cualquier método de transducción es bastante diferente de una estándar (inductiva). Dado
+que el entrenamiento y la predicción se combinan en una etapa, al algoritmo se le proporcionan tanto los datos de entrenamiento como los de prueba, pero los
+segundos sin etiquetas. Este tipo especial de validación se utiliza en todos los algoritmos transductivos \citep{chapelle2006semi}, donde las etiquetas de los
+casos de prueba nunca se utilizan en ningún paso de la etapa de predicción.
 
 \begin{figure}[tpb]
 	\centering
-	\includegraphics[width=\linewidth]{fig/semivssuperv.eps}
+	\includegraphics[width=\textwidth]{fig/semivssuperv.eps}
 	\caption[Aprendizaje semi-supervisado vs supervisado]{ejemplo de predicción con aprendizaje supervisado (a-b) y con aprendizaje semi-supervisado (c-d).}
 	\label{fig:semivssuperv}
 \end{figure}
@@ -63,17 +68,18 @@ genes.
 
 \begin{figure}[tpb]
 	\centering
-	\includegraphics[width=\linewidth]{fig/paradigmas.eps}
-	\caption[Aprendizaje inductivo vs. transductivo]{aprendizaje inductivo y transductivo. a) Esquema tradicional inductivo con dos etapas separadas; b) Esquema transductivo con solo una etapa.}
+	\includegraphics[width=\textwidth]{fig/paradigmas.eps}
+	\caption[Aprendizaje inductivo vs. transductivo]{aprendizaje inductivo y transductivo. a) Esquema tradicional inductivo con dos etapas separadas; b)
+	Esquema transductivo con solo una etapa.}
 	\label{fig:schemes}
 \end{figure}
 
-En la última década, numerosos enfoques experimentales y computacionales fueron utilizados para identificar nuevos miARNs. Los métodos experimentales que se
+En la última década, se utilizaron numerosos enfoques experimentales y computacionales para identificar nuevos miARNs. Los métodos experimentales que se
 han usado tradicionalmente como el clonado directo son capaces de detectar solo miARNs que se expresan de forma abundante \citep{kleftogiannis2013where}. Los
 últimos avances en secuenciación permiten un alto nivel de cobertura, mitigando estos efectos \citep{an2013mirdeep}. Sin embargo, aquellos que se expresan en
 ciertas etapas de una especie, o en tejidos específicos, pueden no ser detectados. Por otro lado, el desarrollo y posterior análisis de los modelos
 computacionales entrenados para reconocer miARNs puede brindar pistas que permitan caracterizar mejor estas moléculas y su biogénesis. Los enfoques
-computacionales utilizados para la identificación pre-miARN pueden dividirse en dos grupos: métodos de homología y métodos de aprendizaje automático. Los
+computacionales utilizados para la identificación miARN pueden dividirse en dos grupos: métodos de homología y métodos de aprendizaje automático. Los
 primeros se basan en la conservación de miARNs entre especies estrechamente relacionadas y, por lo tanto, no pueden usarse para miARNs que son específicos de
 una especie \citep{ng2007novo}. Los métodos de aprendizaje automático utilizan un enfoque diferente, que consiste en extraer primero características de
 pre-miARNs conocidos, de secuencias que se utilizarán como ejemplos negativos y de las secuencias desconocidas que se desea clasificar. Después se utilizan
@@ -90,40 +96,40 @@ genoma, sino que también es fundamental que estas secuencias se corten en los l
 o menor a la real, las características calculadas pueden variar mucho y generar resultados erróneos durante la etapa de predicción. Actualmente, la única
 herramienta disponible para esta tarea \citep{durbin1999einverted} no aprovecha los últimos avances en cuanto a la estimación de estructuras secundarias, por
 lo que el número de secuencias que detecta es bajo y muchos pre-miARN se pierden durante esta temprana etapa. Además, no se tiene en cuenta el contexto de la
-secuencia para detectar dónde son los mejores puntos de corte. Las características utilizadas en la predicción de miARN son muy sensibles a pequeñas
+secuencia para detectar dónde son los mejores puntos de corte. Las características utilizadas en la predicción de pre-miARN son muy sensibles a pequeñas
 diferencias en el corte, por lo que elegir el punto óptimo es crucial para obtener buenos resultados en la clasificación.
 
-\begin{figure}[t]
- \centering
- \includegraphics[width=\textwidth]{fig/mirna.pdf}
- \caption[Estructura secundaria de un pre-miARN]{estructura secundaria de un pre-miARN humano. En rojo se puede ver resaltado el miARN hsa-let-7e.}
- \label{fig:mirna}
-\end{figure}
-
-Por otro lado, durante la última década se han desarrollado una gran cantidad de características específicamente para el problema de predicción de
+Por otro lado, durante la última década se ha desarrollado una gran cantidad de características específicamente para el problema de predicción de
 microARN, que se pueden extraer tanto de las secuencias o sus estructuras secundarias. Se han publicado muchas herramientas para calcular algunas de estas
 características, pero estas están codificados en diferentes lenguajes de programación y tienen diferentes modos de acceso (web, línea de comandos, etc.).
 Además, varias de estas herramientas son software propietario y el código fuente no está disponible \footnote{http://www.insybio.com/pages/ncrnaseq}. Estas
 cuestiones dificultan en gran medida el uso de muchas de estas características.
 
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\textwidth]{fig/mirna.pdf}
+	\caption[Estructura secundaria de un pre-miARN]{estructura secundaria de un pre-miARN humano. En rojo se puede ver resaltado el miARN hsa-let-7e.}
+	\label{fig:mirna}
+\end{figure}
+
 Por último, la etapa de predicción o clasificación de secuencias como posibles candidatos a pre-miARN aún presenta importantes dificultades que no han sido
-resueltas satisfactoriamente. En primer lugar, aunque el número de secuencias no-miARN que se pueden encontrar en cualquier genoma es grande, los ejemplos
-negativos que se utilicen deben ser representativos de la gran variedad de secuencias no-miARN. Un estudio reciente \citep{wei2014improved} analizó la importancia
-de los ejemplos negativos utilizados y cómo esto limita el rendimiento de los clasificadores. En la mayoría de los casos, los conjuntos negativos que se usan
-para ajustar los modelos de clasificación se definen principalmente con secuencias tomadas de regiones de codificación de proteínas, ARNm u otras regiones
-donde es poco probable encontrar miARN \citep{peace2015framework, tempel2015mirboost}. Nada puede asegurar que estas secuencias sean buenos representantes de
-todas las posibles secuencias no-miARN, o que estén lo suficientemente cerca de los límites de la verdadera clase de miARN. Por ejemplo, si el poder de
-predicción de un clasificador se prueba en un conjunto de datos que tiene miARNs y ncARNs, lo que realmente se está midiendo es la capacidad de diferenciar
-miARNs de ncARNs, pero el clasificador no puede descartar correctamente otras secuencias que no sean miARN. Ningún método ha informado tasas de error
-teniendo en cuenta este punto crucial. Para abordar este problema, algunos métodos utilizan secuencias tomadas de posiciones aleatorias de un genoma como
-ejemplos negativos \citep{wenyuan2013training, gudys2013huntmi}. Sin embargo, en este caso, nada puede garantizar que un miARN no conocido se utilice
-erróneamente como un ejemplo negativo. En ambas estrategias de construcción de conjuntos de ejemplos negativos, no se puede garantizar que los ejemplos sean
-representativos de toda la clase negativa; y, lo que es peor, algunos de ellos podrían ser falsos negativos. Otra característica de este problema que
-dificulta la aplicación simple de técnicas de aprendizaje maquinal es el hecho de que el número de ejemplos positivos es muy bajo en cualquier genoma, por
+resueltas satisfactoriamente. En primer lugar, aunque el número de secuencias no pre-miARN que se pueden encontrar en cualquier genoma es grande, los ejemplos
+negativos que se utilicen deben ser representativos de la gran variedad de secuencias no pre-miARN. Un estudio reciente \citep{wei2014improved} analizó la
+importancia de los ejemplos negativos utilizados y cómo esto limita el rendimiento de los clasificadores. En la mayoría de los casos, los conjuntos negativos
+que se usan para ajustar los modelos de clasificación se definen principalmente con secuencias tomadas de regiones de codificación de proteínas, ARNm u otras
+regiones donde es poco probable encontrar miARN \citep{peace2015framework, tempel2015mirboost}. Nada puede asegurar que estas secuencias sean buenos
+representantes de todas las posibles secuencias no pre-miARN, o que estén lo suficientemente cerca de los límites de la verdadera clase de pre-miARN. Por ejemplo,
+si el poder de predicción de un clasificador se prueba en un conjunto de datos que tiene pre-miARNs y ncARNs, lo que realmente se está midiendo es la capacidad
+de diferenciar entre estos dos tipos de secuencia, pero el clasificador podría no descartar correctamente otras secuencias no pre-miARN. Ningún método ha
+informado tasas de error teniendo en cuenta este punto crucial. Para abordar este problema, algunos métodos utilizan secuencias tomadas de posiciones aleatorias
+de un genoma como ejemplos negativos \citep{wenyuan2013training, gudys2013huntmi}. Sin embargo, en este caso, nada puede garantizar que un pre-miARN no conocido
+se utilice erróneamente como un ejemplo negativo. En ambas estrategias de construcción de conjuntos de ejemplos negativos, no se puede garantizar que los
+ejemplos sean representativos de toda la clase negativa; y, lo que es peor, algunos de ellos podrían ser falsos negativos. Otra característica de este problema
+que dificulta la aplicación simple de técnicas de aprendizaje maquinal es el hecho de que el número de ejemplos positivos es muy bajo en cualquier genoma, por
 lo cual este constituye un problema con muy alto desbalance entre clases. Este problema es aún peor en especies no modelo, donde la cantidad de secuencias
 anotadas es menor. Una alternativa puede ser utilizar pre-miARNs de especies cercanas como ejemplos positivos, pero recientemente se ha demostrado
-\citep{lopes2016automatic} que el problema de predicción de pre-miARNs es muy dependiente de la especie, por lo que esta estrategia puede afectar el desempeño de
-las técnicas de predicción. Por otro lado, la gran variedad de secuencias que se pueden utilizar como ejemplos negativos y el bajo número de ejemplos
+\citep{lopes2016automatic} que el problema de predicción de pre-miARNs es muy dependiente de la especie, por lo que esta estrategia puede afectar el desempeño
+de las técnicas de predicción. Por otro lado, la gran variedad de secuencias que se pueden utilizar como ejemplos negativos y el bajo número de ejemplos
 positivos obliga a entrenar clasificadores con un desbalance muy grande entre el número de secuencias positivas y las potencialmente negativas. Esto presenta
 una dificultad adicional ya que está demostrado que las  técnicas estándar de aprendizaje maquinal son muy sensibles al desbalance de clases
 \citep{guo2008class}.
