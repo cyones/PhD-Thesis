@@ -10,12 +10,12 @@ generalizar, es decir, generar salidas correctas cuando reciba como entrada dato
 no supervisado el objetivo es generar modelos que descubran grupos o relaciones subyacentes en los datos sin utilizar ningún tipo de etiqueta o valor de salida
 esperado.
 
-Como punto intermedio entre los dos grupos de técnicas antes mencionados, recientemente apareció un nuevo grupo de algoritmos, llamados de aprendizaje
+Como punto intermedio entre los dos grupos de técnicas antes mencionados, apareció un nuevo grupo de algoritmos, llamados de aprendizaje
 semi-supervisado \citep{chapelle2006semi}. Este tipo de algoritmos utiliza ejemplos etiquetados para aprender la distribución de las clases de la misma forma
 que los métodos de aprendizaje supervisado, pero además aprovecha ejemplos no etiquetados para modelar mejor el espacio de las características y así mejorar las
 tasas de clasificación. Como los ejemplos no etiquetados proveen información extra sobre la distribución de los datos en el espacio de las características, este
 grupo de técnicas obtiene buenas tasas de clasificación en problemas donde la cantidad de datos etiquetados es baja o no es representativa de su clase.  En la
-Figura~\ref{fig:semivssuperv} podemos ver un ejemplo muy simple de como datos sin etiqueta pueden ayudar a reconocer los límites de las clases de interés.
+Figura~\ref{fig:semivssuperv} podemos ver un ejemplo muy simple de cómo datos sin etiqueta pueden ayudar a reconocer los límites de las clases de interés.
 En~\ref{fig:semivssuperv}.a vemos 4 ejemplos de entrenamiento de dos clases diferentes y la frontera de decisión que construiría un clasificador supervisado con
 estos datos de entrada. En el siguiente cuadro vemos que los datos de entrenamiento en realidad no eran representativos de sus clases por lo que la frontera de
 decisión falla al separarlas. Por otro lado, si se utiliza un esquema semi-supervisado (~\ref{fig:semivssuperv}.c) este aprovecha tanto los datos etiquetados
@@ -28,7 +28,7 @@ como los no etiquetados para descubrir la distribución latente de los datos y d
 
 Un concepto que está estrechamente relacionado con el aprendizaje semi-supervisado es el de aprendizaje transductivo. En esta configuración, los datos de
 entrenamiento se utilizan para hacer directamente inferencias en datos de prueba. A diferencia de la mayoría de los métodos inductivos, donde el algoritmo
-tiene dos etapas (entrenamiento e inferencia), los métodos transductivos tienen solo una etapa, como se muestra en la figura ~\ref{fig:schemes}. En el esquema
+tiene dos etapas (entrenamiento e inferencia), los métodos transductivos tienen sólo una etapa, como se muestra en la figura ~\ref{fig:schemes}. En el esquema
 inductivo (a), el algoritmo de aprendizaje utiliza datos de entrenamiento etiquetados para ajustar un modelo. En la segunda etapa, el modelo ya ajustado se usa
 para hacer predicciones sobre datos nuevos (no vistos durante el entrenamiento). En el esquema transductivo (b), tanto los datos etiquetados como los no
 etiquetados se procesan juntos, en la misma etapa. Como resultado, se obtienen etiquetas para los datos no etiquetados, pero ninguna función de decisión, modelo
@@ -40,7 +40,7 @@ casos de prueba nunca se utilizan en ningún paso de la etapa de predicción.
 \begin{figure}[tpb]
 	\centering
 	\includegraphics[width=\textwidth]{fig/semivssuperv.eps}
-	\caption[Aprendizaje semi-supervisado vs supervisado]{ejemplo de predicción con aprendizaje supervisado (a-b) y con aprendizaje semi-supervisado (c-d).}
+	\caption[Aprendizaje semi-supervisado vs supervisado]{Ejemplo de clasificación con aprendizaje supervisado (a-b) y con aprendizaje semi-supervisado (c-d).}
 	\label{fig:semivssuperv}
 \end{figure}
 
@@ -69,29 +69,29 @@ genes.
 \begin{figure}[tpb]
 	\centering
 	\includegraphics[width=\textwidth]{fig/paradigmas.eps}
-	\caption[Aprendizaje inductivo vs. transductivo]{aprendizaje inductivo y transductivo. a) Esquema tradicional inductivo con dos etapas separadas; b)
-	Esquema transductivo con solo una etapa.}
+	\caption[Aprendizaje inductivo vs. transductivo]{Aprendizaje inductivo y transductivo. a) Esquema tradicional inductivo con dos etapas separadas; b)
+	Esquema transductivo con sólo una etapa.}
 	\label{fig:schemes}
 \end{figure}
 
-En la última década, se utilizaron numerosos enfoques experimentales y computacionales para identificar nuevos miARNs. Los métodos experimentales que se
-han usado tradicionalmente como el clonado directo son capaces de detectar solo miARNs que se expresan de forma abundante \citep{kleftogiannis2013where}. Los
+En la última década, se utilizaron numerosos enfoques experimentales y computacionales para identificar nuevos miARNs. Los métodos experimentales que se han
+usado tradicionalmente como el clonado directo son capaces de detectar sólo miARNs que se expresan de forma abundante \citep{kleftogiannis2013where}. Los
 últimos avances en secuenciación permiten un alto nivel de cobertura, mitigando estos efectos \citep{an2013mirdeep}. Sin embargo, aquellos que se expresan en
 ciertas etapas de una especie, o en tejidos específicos, pueden no ser detectados. Por otro lado, el desarrollo y posterior análisis de los modelos
 computacionales entrenados para reconocer miARNs puede brindar pistas que permitan caracterizar mejor estas moléculas y su biogénesis. Los enfoques
-computacionales utilizados para la identificación miARN pueden dividirse en dos grupos: métodos de homología y métodos de aprendizaje automático. Los
-primeros se basan en la conservación de miARNs entre especies estrechamente relacionadas y, por lo tanto, no pueden usarse para miARNs que son específicos de
-una especie \citep{ng2007novo}. Los métodos de aprendizaje automático utilizan un enfoque diferente, que consiste en extraer primero características de
-pre-miARNs conocidos, de secuencias que se utilizarán como ejemplos negativos y de las secuencias desconocidas que se desea clasificar. Después se utilizan
-las características de las secuencias conocidas (tanto positivas como negativas) para entrenar un clasificador de forma supervisada, para finalmente aplicarlo
-a las secuencias no conocidas y obtener una predicción \citep{kleftogiannis2013where}. Las características que pueden usarse para representar secuencias de
-ARN han sido ampliamente estudiadas \citep{Lopes2014}. Además, muchos algoritmos de aprendizaje supervisado han sido aplicados a este problema: máquinas de
-soporte vectorial, modelos ocultos de Markov y ensambles de clasificadores, entre otros \citep{kleftogiannis2013where}. Sin embargo todavía existen muchos
-problemas abiertos en la predicción de pre-miARNs con técnicas de aprendizaje maquinal.
+computacionales utilizados para la clasificación de secuencais candidatas a miARN pueden dividirse en dos grupos: métodos por homología y métodos de aprendizaje
+automático. Los primeros se basan en la conservación de miARNs entre especies estrechamente relacionadas y, por lo tanto, no pueden usarse para miARNs que son
+específicos de una especie \citep{ng2007novo}. Los métodos de aprendizaje automático utilizan un enfoque diferente, que consiste en extraer primero
+características de pre-miARNs conocidos, de secuencias que se utilizarán como ejemplos negativos y de las secuencias desconocidas que se desea clasificar.
+Después se utilizan las características de las secuencias conocidas (tanto positivas como negativas) para entrenar un clasificador de forma supervisada, para
+finalmente aplicarlo a las secuencias no conocidas y obtener una predicción \citep{kleftogiannis2013where}. Las características que pueden usarse para
+representar secuencias de ARN han sido ampliamente estudiadas \citep{Lopes2014}. Además, muchos algoritmos de aprendizaje supervisado han sido aplicados a este
+problema: máquinas de soporte vectorial, modelos ocultos de Markov y ensambles de clasificadores, entre otros \citep{kleftogiannis2013where}. Sin embargo
+todavía existen muchos problemas abiertos en la predicción de pre-miARNs con técnicas de aprendizaje maquinal \citep{stegmayer2018predicting}.
 
 La gran mayoría de los métodos de predicción del estado del arte toman como entrada secuencias con estructura secundaria tipo tallo-horquilla y se encargan
 luego de extraer características, entrenar un clasificador y hacer predicciones. Si bien este primer paso generalmente es ignorado, es fundamental para lograr
-buenos resultados en las etapas posteriores. No solo es importante lograr capturar todas las secuencias con estructura secundaria tipo tallo horquilla del
+buenos resultados en las etapas posteriores. No sólo es importante lograr capturar todas las secuencias con estructura secundaria tipo tallo horquilla del
 genoma, sino que también es fundamental que estas secuencias se corten en los lugares correctos. Si un pre-miARN se corta erróneamente con una longitud mayor
 o menor a la real, las características calculadas pueden variar mucho y generar resultados erróneos durante la etapa de predicción. Actualmente, la única
 herramienta disponible para esta tarea \citep{durbin1999einverted} no aprovecha los últimos avances en cuanto a la estimación de estructuras secundarias, por
@@ -101,20 +101,20 @@ diferencias en el corte, por lo que elegir el punto óptimo es crucial para obte
 
 Por otro lado, durante la última década se ha desarrollado una gran cantidad de características específicamente para el problema de predicción de
 microARN, que se pueden extraer tanto de las secuencias o sus estructuras secundarias. Se han publicado muchas herramientas para calcular algunas de estas
-características, pero estas están codificados en diferentes lenguajes de programación y tienen diferentes modos de acceso (web, línea de comandos, etc.).
+características, pero estas están codificadas en diferentes lenguajes de programación y tienen diferentes modos de acceso (web, línea de comandos, etc.).
 Además, varias de estas herramientas son software propietario y el código fuente no está disponible \footnote{http://www.insybio.com/pages/ncrnaseq}. Estas
 cuestiones dificultan en gran medida el uso de muchas de estas características.
 
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=\textwidth]{fig/mirna.pdf}
-	\caption[Estructura secundaria de un pre-miARN]{estructura secundaria de un pre-miARN humano. En rojo se puede ver resaltado el miARN hsa-let-7e.}
+	\caption[Estructura secundaria de un pre-miARN]{Estructura secundaria de un pre-miARN humano. En rojo se puede ver resaltado el miARN hsa-let-7e.}
 	\label{fig:mirna}
 \end{figure}
 
 Por último, la etapa de predicción o clasificación de secuencias como posibles candidatos a pre-miARN aún presenta importantes dificultades que no han sido
 resueltas satisfactoriamente. En primer lugar, aunque el número de secuencias no pre-miARN que se pueden encontrar en cualquier genoma es grande, los ejemplos
-negativos que se utilicen deben ser representativos de la gran variedad de secuencias no pre-miARN. Un estudio reciente \citep{wei2014improved} analizó la
+negativos que se utilicen deben ser representativos de la gran variedad de secuencias no pre-miARN. Un estudio \citep{wei2014improved} analizó la
 importancia de los ejemplos negativos utilizados y cómo esto limita el rendimiento de los clasificadores. En la mayoría de los casos, los conjuntos negativos
 que se usan para ajustar los modelos de clasificación se definen principalmente con secuencias tomadas de regiones de codificación de proteínas, ARNm u otras
 regiones donde es poco probable encontrar miARN \citep{peace2015framework, tempel2015mirboost}. Nada puede asegurar que estas secuencias sean buenos

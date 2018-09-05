@@ -37,7 +37,7 @@ separación en horquillas como si lo hace HextractoR.
 		\bottomrule
 	\end{tabular}
 	\label{tab:hextractor}
-	\caption[Cantidad de horquillas y pre-miARN en varios genomas]{cantidad de horquillas y pre-miARNs encontrados por cada método en el genoma de 6 especies}
+	\caption[Cantidad de horquillas y pre-miARN en varios genomas]{Cantidad de horquillas y pre-miARNs encontrados por cada método en el genoma de 6 especies}
 \end{table}
 
 \section{Predicción de pre-microARN}
@@ -46,41 +46,40 @@ En esta sección se presentan los resultados de los experimentos realizados para
 subsección, se reprodujeron experimentos realizados por otros autores para comparar miRNAss con métodos supervisados del estado del arte en condiciones
 controladas. Los conjuntos negativos fueron definidos artificialmente por los autores originales y la proporción de ejemplos etiquetados fue muy alta. En la
 segunda subsección, el porcentaje de ejemplos etiquetados se redujo gradualmente para acercarse más a un caso real de predicción de pre-miARN. Además,
-miRNAss se probó en un esquema de una clase, donde solo se conocían ejemplos positivos (pre-miARNs reales) de antemano. En la última subsección, miARN se
-aplicó a una tarea de predicción real a partir de datos del genoma completo de 3 especies modelo, sin ejemplos negativos y utilizando solo un bajo número de
+miRNAss se probó en un esquema de una clase, donde sólo se conocían ejemplos positivos (pre-miARNs reales) de antemano. En la última subsección, miARN se
+aplicó a una tarea de predicción real a partir de datos del genoma completo de 3 especies modelo, sin ejemplos negativos y utilizando sólo un bajo número de
 ejemplos positivos. En esta última prueba, había un enorme desbalance de clases y se procesaron más de un millón de secuencias de entrada.
 Comparación en conjuntos de datos etiquetados artificialmente
 
 \subsection*{Comparación con métodos del estado del arte}
-Las condiciones experimentales en esta sección son las mismas que las utilizadas para probar otros métodos del estado del arte. Se estableció $ F_{1} $ como
-medida de desempeño utilizada para la optimización del umbral en todos los métodos. Los experimentos se diseñaron para estimar el desempeño de métodos de
-aprendizaje supervisado, por lo que se utiliza un esquema estándar de validación cruzada con 10 particiones. En este esquema, la mayoría de las secuencias
-están etiquetadas artificialmente para el entrenamiento, y solo un $ 10 \% $ queda sin etiquetar. Por lo tanto, es importante señalar que la principal
-ventaja del aprendizaje semi-supervisado, que es explotar datos no etiquetados para mejorar los resultados, no se puede aprovechar en estos experimentos.
-Para una comparación justa, en estos experimentos los clasificadores usan las mismas características. Este conjunto está compuesto por 7 características de
-miPred \citep{ng2007novo}, más 14 de microPred \citep{batuwita2009micropred} y 7 añadidas por \cite{gudys2013huntmi}. Para obtener más detalles sobre el
-conjunto de características, consulte la Sección S4 del Anexo~\ref{sec:mirnass}.
+Se estableció $ F_{1} $ como medida de desempeño utilizada para la optimización del umbral en todos los métodos. Los experimentos se diseñaron para estimar el
+desempeño de métodos de aprendizaje supervisado, por lo que se utiliza un esquema estándar de validación cruzada con 10 particiones. En este esquema, la mayoría
+de las secuencias están etiquetadas artificialmente para el entrenamiento, y sólo un $ 10 \% $ queda sin etiquetar. Por lo tanto, es importante señalar que la
+principal ventaja del aprendizaje semi-supervisado, que es explotar datos no etiquetados para mejorar los resultados, no se puede aprovechar en estos
+experimentos.  Para una comparación justa, en estos experimentos los clasificadores usan las mismas características. Este conjunto está compuesto por 7
+características de miPred \citep{ng2007novo}, más 14 de microPred \citep{batuwita2009micropred} y 7 añadidas por \cite{gudys2013huntmi}. Para obtener más
+detalles sobre el conjunto de características, se puede consultar la Sección S4 del Anexo~\ref{sec:mirnass}.
 
 Como antes se especificó, se ejecutó una validación cruzada estratificada de 10 particiones en cinco conjuntos de datos y se compararon los resultados con
 los obtenidos por HuntMi \citep{gudys2013huntmi}. Las particiones fueron construidas al azar usando una semilla fija para tener experimentos totalmente
 reproducibles. Tres conjuntos de datos contenían una mezcla de secuencias de diferentes especies, que se agruparon en los conjuntos de datos animales (10
 especies), plantas (7 especies) y virus (29 especies). Los otros dos conjuntos de datos contenían secuencias de \textit{Homo sapiens} y \textit{Arabidopsis
 thaliana}. Los parámetros utilizados en miRNAss fueron los mismos en todas las pruebas: $ c = 1 $ y $ k = 10 $ (tanto para RELIEF-F como para la construcción
-de grafos). MiRNAss se probó con y sin RELIEF-F, para medir su impacto en el rendimiento. La ponderación de características obviamente se calculó
-utilizando solo los datos de entrenamiento de cada partición.
+de grafos). MiRNAss se probó con y sin RELIEF-F, para medir su impacto en el rendimiento. La ponderación de características se calculó utilizando sólo los datos
+de entrenamiento de cada partición.
 
 
-Los tiempos transcurridos medidos \footnote{Intel \textregistered Core \texttrademark i5-4460 CPU @ 3.20GHz, 8 GB de RAM.} En cada pliegue se promediaron y se
+Los tiempos transcurridos medidos \footnote{Intel \textregistered Core \texttrademark i5-4460 CPU @ 3.20GHz, 8 GB de RAM.} en cada pliegue se promediaron y se
 presentan en la Tabla~\ref{tab:times}. La primera columna muestra el número total de secuencias. La segunda y tercera columnas indican el número de
 secuencias pre-miARN y no pre-miARN en cada conjunto de datos. La cuarta y quinta columnas presentan los tiempos transcurridos para cada método. La última
 columna muestra el cociente entre el tiempo que tardó HuntMi y el tiempo que tardó miRNAss. La mayor diferencia se observó en el conjunto de datos más
 pequeño (virus): miRNAss fue 38 veces más rápido que HuntMi. Arabidopsis es el segundo conjunto de datos más pequeño, y aquí miRNAss fue 14 veces más
 rápido. En los siguientes tres conjuntos de datos, las diferencias de tiempo de computación entre miRNAss y HuntMi aumentaron a medida que crecía el número
-de secuencias. Estos resultados muestran que miARN no solo es mucho más rápido sino que el costo computacional crece más rápido en HuntMi. Tales
+de secuencias. Estos resultados muestran que miARN no sólo es mucho más rápido sino que el costo computacional crece más rápido en HuntMi. Tales
 diferencias pueden ser irrelevantes en pequeños conjuntos de datos como los que se utilizan en esta subsección, pero se vuelven muy importantes en tareas de
 predicción de genoma completo, donde se procesan varios millones de secuencias. Por ejemplo, si extrapolamos los tiempos de entrenamientos utilizando los
 datos de la tabla, para entrenar a HuntMi con 1.7 millones de secuencias (uno de los conjuntos de datos del genoma utilizado en la sección~\ref{sec:results:genome-wide})
-se necesitarían alrededor de 37 días, mientras que miRNAss solo se requieren 18 horas.
+se necesitarían alrededor de 37 días, mientras que miRNAss sólo se requieren 18 horas.
 Con respecto a las medidas de predicción, ambos métodos se realizaron de manera similar en este experimento. Se aplicó una prueba de Friedman \citep{friedman1937use},
 que dio como resultado un valor $ p $ de 0,179. Esto demuestra que el método propuesto puede obtener resultados equivalentes a un método
 del estado del arte para la configuración supervisada, aunque en menos tiempo (como se muestra en la Tabla~\ref{tab:times}).
@@ -96,7 +95,7 @@ del estado del arte para la configuración supervisada, aunque en menos tiempo (
 		Plants      & 117,101  &    2,172  &   114,929 & & 21,561 s &   714 s & 30.19    \\
 		Animals     & 225,207  &    7,053  &   218,154 & & 65,762 s & 1,834 s & 35.85    \\\bottomrule
 	\end{tabular}
-	\caption[Comparación de tiempos de ejecución]{comparación de los tiempos de ejecución entre miRNAss y HuntMi.\label{tab:times}}
+	\caption[Comparación de tiempos de ejecución]{Comparación de los tiempos de ejecución entre miRNAss y HuntMi.\label{tab:times}}
 \end{table}
 Además, fue posible verificar que RELIEF-F mejoró los resultados en todas las pruebas, aunque en algunas de ellas las diferencias fueron pequeñas. Esto era
 de esperar, dado que las características utilizadas en estos conjuntos de datos son el resultado de procesos previos de selección de características. Una
@@ -112,7 +111,7 @@ animales y menos del 1,3 \% en plantas.
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=0.6\linewidth]{fig/delta_mirbase_radar.eps}
-	\caption[Sensibilidad en animales y plantas]{sensibilidad obtenida con varios clasificadores del estado del arte en: a) animales, y b) plantas.
+	\caption[Sensibilidad en animales y plantas]{Sensibilidad obtenida con varios clasificadores del estado del arte en: a) animales, y b) plantas.
 		La distancia de cada punto al centro mide la sensibilidad obtenida obtenida cada especie.}
 	\label{fig:deltaRadar}
 \end{figure}
@@ -121,13 +120,13 @@ gráfica de radar. En el conjunto de datos de animales, miRNAss superó a microP
 una mayor $S^{+}$ que microPred, que, como se mencionó anteriormente, se diseñó específicamente para humanos. Comparado con HuntMi, miRNAss obtuvo mayores
 $S^{+}$ en 4 especies, HuntMi produjo mejores resultados en 4 especies y los resultados obtenidos fueron iguales en 3 especies. En plantas, miRNAss superó a
 PlantMiRNAPred en casi todas las especies. Comparado con HuntMi, miRNAss tuvo una mejor $S^{+}$ en 8 especies, mientras que HuntMi superó ligeramente al
-miRNAss en solo 2 especies (\textit{Cucumis melo} y \textit{Sorghum bicolor}).
+miRNAss en sólo 2 especies (\textit{Cucumis melo} y \textit{Sorghum bicolor}).
 Para analizar si hubo diferencias significativas entre los clasificadores, se realizaron pruebas de Nemenyi \citep{nemenyi1962distribution} para ambos
 conjuntos de datos ($ p<0,05 $). En las especies de animales, HuntMi y miRNAss produjeron resultados equivalentes, pero ambos se desempeñaron mejor que
 microPred. En especies de plantas, miRNAss obtuvo el rango más bajo (el mejor) y una diferencia significativa con PlantMiRNAPred. Sin embargo, la diferencia
 con HuntMi no fue estadísticamente significativa.
 
-Los métodos supervisados hacen un uso extenso de los datos etiquetados, no solo para el entrenamiento sino también para encontrar los hiper-parámetros
+Los métodos supervisados hacen un uso extenso de los datos etiquetados, no sólo para el entrenamiento sino también para encontrar los hiper-parámetros
 y umbrales óptimos. Por el contrario, miRNAss se diseñó sobre la hipótesis de que los ejemplos etiquetados son escasos, poco confiables y no
 representativos de toda la clase, que en realidad es un escenario más realista para esta tarea de predicción. Por lo tanto, debe tenerse en cuenta que,
 incluso bajo estas condiciones desfavorables, miRNAss obtuvo resultados significativamente mejores que MicroPred y PlantMiRNAPred, y resultados equivalentes a
@@ -138,23 +137,23 @@ los producidos por HuntMi, siendo sin embargo, mucho más rápido.
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=\linewidth]{fig/few_labeled-huntmi.eps}
-	\caption[$\bar{G}$ con pocos ejemplos de entrenamiento]{curvas de $\bar{G}$ obtenidas al disminuir el porcentaje de ejemplos etiquetados. Regiones
+	\caption[$\bar{G}$ con pocos ejemplos de entrenamiento]{Curvas de $\bar{G}$ obtenidas al disminuir el porcentaje de ejemplos etiquetados. Regiones
 		sombreados representan los intervalos de confianza de la estimación con regresión local (LOESS) con $p < 0.05$.}
 	\label{fig:fewSamples:huntmi}
 \end{figure}
 
-Para representar un escenario más realista en el que el número de ejemplos conocidos es bajo, los cinco conjuntos de datos utilizados en las últimas pruebas
+Para representar un escenario más realista en el que el número de ejemplos conocidos es muy bajo, los cinco conjuntos de datos utilizados en las últimas pruebas
 se utilizaron con distintos porcentajes de secuencias etiquetadas y se realizaron pruebas en un esquema de validación entrenamiento-prueba. El porcentaje de
 ejemplos etiquetados se redujo del 20 \% al 2 \%, con un paso del 2 \%. Los ejemplos etiquetados se seleccionaron al azar y las pruebas se repitieron 200 veces
 para cada porcentaje para estimar los intervalos de confianza. En la Figura~\ref{fig:fewSamples:huntmi}, se estimaron las curvas de $F_{1}$ esperadas con
-intervalos de confianza de 0,05 para la comparación. En el conjunto de datos humanos, el $F_{1}$ es casi un 10 \% más alto para miRNAss, independientemente
-del porcentaje de secuencias marcadas. En el conjunto de datos de Arabidopsis, donde el número de secuencias de ejemplos positivos fue menor, las diferencias
-a favor de miRNAss fueron más altas en los porcentajes más bajos de ejemplos etiquetados, lo que indica que miRNAss puede identificar efectivamente la clase
-positiva incluso con un número muy bajo de ejemplos. Las mismas tendencias se observan en los animales, las plantas y los conjuntos de datos de virus.
-Estos resultados no solo muestran que miRNAss es capaz de superar a los métodos supervisados cuando el número de ejemplos etiquetados es bajo, sino
-también que las tasas de error estimadas usando una alta proporción de ejemplos etiquetados son muy diferentes de las obtenidas en escenarios más realistas.
+intervalos de confianza de 0,05 para la comparación. En el conjunto de datos humanos, el $F_{1}$ es casi un 10 \% más alto para miRNAss, independientemente del
+porcentaje de secuencias marcadas. En el conjunto de datos de Arabidopsis, donde el número de secuencias de ejemplos positivos fue menor, las diferencias a
+favor de miRNAss fueron más altas en los porcentajes más bajos de ejemplos etiquetados, lo que indica que miRNAss puede identificar efectivamente la clase
+positiva incluso con un número muy bajo de ejemplos. Las mismas tendencias se observan en los animales, las plantas y los conjuntos de datos de virus. Estos
+resultados no sólo muestran que miRNAss es capaz de superar a los métodos supervisados cuando el número de ejemplos etiquetados es bajo, sino también que las
+tasas de error estimadas usando una alta proporción de ejemplos etiquetados son muy diferentes de las obtenidas en escenarios más realistas.
 
-Un paso más hacia una tarea de predicción más realista consiste en usar solo ejemplos positivos. Bajo estas condiciones, miRNAss se comparó con miRank
+Un paso más hacia una tarea de predicción más realista consiste en usar sólo ejemplos positivos. Bajo estas condiciones, miRNAss se comparó con miRank
 \citep{xu2008microrna}, que fue diseñado para trabajar con un número extremadamente pequeño de ejemplos positivos. Se utilizaron los conjuntos de datos
 proporcionados por el autor original: 533 pre-miARNs humanos y 1000 secuencias no miARN. Para hacer una comparación justa, ambos métodos usaron el conjunto
 de características de miRank. Este conjunto está compuesto por 32 tripletas \citep{xue2005classification}, MFE normalizado, propensiones de emparejamiento de
@@ -174,7 +173,7 @@ baja densidad que separan los miARNs del resto de las secuencias, independientem
 \begin{figure}[tpb]
 	\centering
 	\includegraphics[width=\linewidth]{fig/few_samples_miRank.eps}
-	\caption[$AUC$ con pocos ejemplos positivos]{diagrama de caja de las AUC obtenidas por miRNAss y miRank, con diferentes cantidades de ejemplos de entrenamiento positivos.}
+	\caption[$AUC$ con pocos ejemplos positivos]{Diagrama de caja de las AUC obtenidas por miRNAss y miRank, con diferentes cantidades de ejemplos de entrenamiento positivos.}
 	\label{fig:miRank}
 \end{figure}
 
@@ -189,8 +188,8 @@ Para detectar los pre-miARNs conocidos se utilizó la base de datos mirBase v21.
 Se extrajeron dos conjuntos de características de los tres genomas. El primero (FS1) es el mismo usado en la Sección ~\ref{sec:results}.1, para hacer una
 comparación justa con uno de los métodos. El segundo conjunto de características (FS2) es un conjunto ampliado compuesto por casi todas las características
 propuestas para la predicción pre-miARN en la literatura. FS2 se calculó con miRNAfe y cada vector de característica resultó en 79 elementos. Para obtener más
-información sobre los conjuntos de características, consulte la Sección~S4 del Anexo~\ref{sec:mirnass}. Se utilizó un esquema de validación cruzada (CV) de 10
-veces para medir el rendimiento de miARNs con curvas ROC promediadas.
+información sobre los conjuntos de características, se puede consultar la Sección~S4 del Anexo~\ref{sec:mirnass}. Se utilizó un esquema de validación cruzada
+(CV) de 10 veces para medir el rendimiento de miARNs con curvas ROC promediadas.
 Muchos algoritmos de predicción pre-miARN se probaron en estos conjuntos de datos para comparar su rendimiento con miRNAss. En total se han probado once
 predictores, pero la mayoría han fallado con datos genómicos o sus servidores no funcionan. Los cinco predictores que se pudieron aplicar a genomas completos
 fueron HuntMi, Mirident \citep{liu2012integrated}, HHMMiR \citep{kadri2009hhmmir}, MiRPara \citep{wu2011mirpara} y miR-BAG \citep{jha2012mirbag}. Los primeros
@@ -234,7 +233,7 @@ secuencias no etiquetadas para ajustarse mejor al límite de decisión alrededor
 \begin{table}[tpb]
 	\footnotesize
 	\centering
-	\caption[Resultados en genomá completo]{media geométrica de la sensibilidad y la especificidad ($\bar{G}$) y suma de falsos y verdaderos positivos 
+	\caption[Resultados en genomá completo]{Media geométrica de la sensibilidad y la especificidad ($\bar{G}$) y suma de falsos y verdaderos positivos
 		($TPFP$, por sus siglas en ingles) en las tres pruebas de genoma completo.
 	\label{tab:wholegenome}}
 	\begin{tabular}{@{}lrcrcrc@{}} \toprule
