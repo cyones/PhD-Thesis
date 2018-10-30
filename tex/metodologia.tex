@@ -13,7 +13,7 @@ filtrado, se pueden utilizar para cortar el genoma completo en subcadenas que pu
 esta etapa es entonces extraer todas las secuencias tipo tallo-horquilla de un genoma cortando en los puntos donde se obtienen las estructuras secundarias con
 la mayor estabilidad termodinámica posible.
 
-Para ello, se predice la estructura secundaria de varios segmentos superpuestos de una longitud más larga que la longitud media de las secuencias de la especies
+Para ello, se predice la estructura secundaria de varios segmentos superpuestos de una longitud mayor que la longitud media de las secuencias de la especies
 de interés, asegurándose de que nada se pierda ni se corte de manera inapropiada. La longitud de la ventana de corte se puede configurar para definir el tamaño
 máximo que tendrán las secuencias encontradas. Los pasos de procesamiento (ver Figura\ref{fig:esquema}) se explican en detalle en las siguientes secciones.
 
@@ -27,7 +27,7 @@ máximo que tendrán las secuencias encontradas. Los pasos de procesamiento (ver
 \subsection{Ventaneo del genoma}
 
 Se comienza cortando el genoma completo en ventanas solapadas de una longitud varias veces mayor (500 nt.) a la de un pre-miARN promedio. La ventana debe ser lo
-suficientemente larga para poder capturar la horquilla completa pero además para que se tenga en cuenta el entorno de cualquier posible horquilla al estimar la
+suficientemente grande para poder capturar la horquilla completa pero además para que se tenga en cuenta el entorno de cualquier posible horquilla al estimar la
 estructura secundaria. Esto último es muy importante ya que los resultados de estimar la estructura secundaria se ven muy afectados por el entorno de la
 secuencia. Por ejemplo, sin considerar el entorno de una secuencia, la estructura secundaria estimada puede presentar una estabilidad menor a la que se formaría
 si se habría considerado el entorno.
@@ -36,7 +36,7 @@ si se habría considerado el entorno.
 
 Se predice la estructura secundaria que formaría cada una de las ventanas al plegarse. Para ello se utiliza el algoritmo de mínima energía libre
 \citep{zuker1981optimal}. Este algoritmo utiliza programación dinámica para encontrar la estructura secundaria que minimiza la energía liberada. Dado que las
-ventanas utilizadas son relativamente largas, las estructuras normalmente presentan múltiples bucles. Por lo tanto, el siguiente paso es buscar los puntos de
+ventanas utilizadas son relativamente grandes, las estructuras normalmente presentan múltiples bucles. Por lo tanto, el siguiente paso es buscar los puntos de
 corte que logren separar la estructura completa en varias estructuras tipo horquilla, como se puede ver en la Figura~\ref{fig:hextractor}. De las horquillas
 extraídas, se eliminan las que no superan una longitud y nivel de emparejamiento mínimo y el resto pasa a la siguiente etapa.
 
@@ -221,7 +221,7 @@ Se pueden extraer un total de 14 características en este grupo, que se describe
 
 Estas características se calculan en todas las subcadenas de 22 nt dentro de una secuencia determinada. Se basan en el hecho de que si una secuencia es un
 pre-miARN, una de las subcadenas analizadas tiene que ser el miARN maduro y las características calculadas deben capturar sus particularidades. Como
-resultado, se obtiene una matriz con longitud $ n = \ell - 22 $, donde el elemento $i$-th representa el valor de la característica calculada sobre la
+resultado, se obtiene una matriz con longitud $ n = \ell - 22 $, donde el elemento $i$-esimo representa el valor de la característica calculada sobre la
 subcadena que comienza en la base $i$. MiRNAfe puede extraer las siguientes 5 características en este grupo:
 \begin{itemize}
 	\item probabilidad de emparejamiento de bases en la subcadena \citep{lim2003}, que es la suma de probabilidades de emparejamiento de bases sobre la subcadena;
@@ -259,7 +259,7 @@ continuación se describe el nuevo clasificador propuesto, denominado miRNAss.
 %****************************************************************************************
 
 MiRNAss recibe como entrada un conjunto de vectores de características $m$-dimensional $\mathbf{x}_{i}$, que representan secuencias, y un vector
-correspondiente de etiquetas $\Bell$. El elemento $i$-th en el vector de etiquetas tiene un valor positivo $\gamma_{+}$ si la secuencia $i$-th es un pre-miARN
+correspondiente de etiquetas $\Bell$. El elemento $i$-iesimo en el vector de etiquetas tiene un valor positivo $\gamma_{+}$ si la secuencia $i$-esima es un pre-miARN
 conocido, un valor negativo $\gamma_{-}$ si no es un pre-miARN, y cero si es una secuencia desconocida que debe ser clasificada por el método. El método
 tiene cuatro pasos: 1) construcción de un grafo donde cada nodo representa una secuencia; 2) busqueda de ejemplos negativos, si no se proporcionan; 3) estimación
 de los puntajes de predicción para cada nodo en el grafo; y 4) estimación de un umbral óptimo para separar las secuencias en dos clases.
@@ -287,8 +287,8 @@ similares al ejemplo de la otra clase. El resultado se llama vector de relevanci
 relevancia de una característica es negativa, entonces no ayuda a discriminar entre clases y por lo tanto puede ser eliminada. El resto de las características se escala
 por su puntaje de relevancia para dar más peso a las más discriminativas.
 
-Para la construcción del grafo, una opción común es el algoritmo de $k$-vecinos más cercanos (KNN), dado que es simple, rápido, eficiente en uso de
-memoria y fácilmente paralelizable. KNN construye una matriz de adyacencia ponderada por similitud con elementos
+Para la construcción del grafo, una opción común es el algoritmo de $k$-vecinos más cercanos \citep{eppstein1997nearest}, dado que es simple, rápido, eficiente en uso de
+memoria y fácilmente paralelizable. Este algoritmo construye una matriz de adyacencia ponderada por similitud con elementos
 
 \begin{equation}
 	a_{ij} =
@@ -299,7 +299,7 @@ memoria y fácilmente paralelizable. KNN construye una matriz de adyacencia pond
 	\end{cases}
 \end{equation}
 
-\noindent donde $\mathbf{x}_{i}$ es el vector de características correspondiente a la secuencia $i$-th, $\mathcal{K} (\mathbf{x}_{i})$ es el conjunto de los
+\noindent donde $\mathbf{x}_{i}$ es el vector de características correspondiente a la secuencia $i$-esima, $\mathcal{K} (\mathbf{x}_{i})$ es el conjunto de los
 $k$ vecinos más cercanos de $\mathbf{x}_{i}$, y $\mu$ es la media de las distancias entre las secuencias conectadas y se  utiliza para normalizar los pesos de
 las aristas.
 
@@ -310,7 +310,7 @@ las aristas.
 \renewcommand{\algorithmicensure}{\textbf{Salida:}}
 \renewcommand{\algorithmicrepeat}{\textbf{repetir}}
 \renewcommand{\algorithmicuntil}{\textbf{mientras}}
-\renewcommand{\algorithmicreturn}{\textbf{delvolver}}
+\renewcommand{\algorithmicreturn}{\textbf{devolver}}
 \begin{algorithm}[tpb]
 	\caption{Búsqueda automática de ejemplos negativos}
 	\label{algNS}
@@ -363,7 +363,7 @@ como
 	\end{cases}
 \end{equation*}
 
-\noindent El Laplaciano tiene una propiedad útil para medir la suavidad de la solución. Supongamos $\mathbf{z} \in \mathbb{R} ^ N$, con una predicción para cada nodo
+\noindent El laplaciano tiene una propiedad útil para medir la suavidad de la solución. Supongamos $\mathbf{z} \in \mathbb{R} ^ N$, con una predicción para cada nodo
 del gráfico. Entonces,
 
 \begin{equation}
@@ -394,7 +394,7 @@ El problema de optimización completo queda definido como
 \begin{equation}
 	\begin{split}
 		\arg\min_{\mathbf{z}} & \qquad \mathbf{z}^TL\mathbf{z} +c(\mathbf{z}-\Bell)^TC(\mathbf{z}-\Bell) \\
-		s.t. & \qquad \mathbf{z}^T\mathbf{1} = 0, \\
+		s.a. & \qquad \mathbf{z}^T\mathbf{1} = 0, \\
 		     & \qquad \mathbf{z}^T\mathbf{z} = n
 	\end{split}
 \end{equation}
@@ -403,7 +403,7 @@ El problema de optimización completo queda definido como
 $\mathbf{z}$ sea cero; es decir, las etiquetas de predicción deben tener tanto valores negativos como positivos. La segunda restricción elimina las versiones
 escaladas de la solución que, para nuestro propósito, son todas equivalentes.
 
-Los valores $\ell_{i}$ se establecen en $\gamma_{+}$, $\gamma_{-}$ o cero, dependiendo de si la secuencia $ i $-th es positiva, negativa o desconocida,
+Los valores $\ell_{i}$ se establecen en $\gamma_{+}$, $\gamma_{-}$ o cero, dependiendo de si la secuencia $ i $-esima es positiva, negativa o desconocida,
 respectivamente. Como la función objetivo obliga a los valores de $\mathbf{z}$ a acercarse a $\gamma_{+}$ o $\gamma_{-}$, estas constantes deben definirse de
 manera tal que la solución óptima $\mathbf{z}^\star$ pueda satisfacer ambas restricciones del problema. Si $n_{+}$ y $n_{-}$ son las cantidades reales de nodos
 positivos y negativos en la solución, definiendo $\gamma_{+} = \sqrt{n_{-}/n_{+}}$ y $\gamma_{-}=-\sqrt{n_{+}/n_{-}}$ se consigue que $\mathbf{z}^\star$
@@ -427,7 +427,7 @@ que si $ C_ {ii}> (n n _ {+}) / (c n _ {-}) $, la clasificación incorrecta de l
 el término no supervisado. Entonces, no puede ser mal clasificado. Como valor predeterminado los elementos distintos de cero de $ C $ se establecen en $ 1 $,
 tanto para los ejemplos positivos como negativos.
 
-Para resolver este problema de optimización primero calculamos la descomposición espectral del Laplaciano $ L = U \Sigma U ^ T $. A continuación, utilizamos un
+Para resolver este problema de optimización primero calculamos la descomposición espectral del laplaciano $ L = U \Sigma U ^ T $. A continuación, utilizamos un
 nuevo vector de parámetro $ \mathbf {w} $ tal que $ \mathbf {z} = U \mathbf {w} $. Como el vector propio correspondiente al valor propio más bajo siempre es
 constante, la primera restricción del problema de optimización se convierte en $ w_ {1} = 0 $. Si definimos $ V $ como la matriz con todos los vectores propios,
 excepto el primero, y $ H $ como la matriz diagonal con todos los valores propios, excepto el más bajo, obtenemos el siguiente problema de optimización
@@ -435,7 +435,7 @@ excepto el primero, y $ H $ como la matriz diagonal con todos los valores propio
 \begin{equation}
 	\begin{split}
 		\arg\min_{\mathbf{w}} & \quad \mathbf{w}^T H \mathbf{w} + c (V \mathbf{w} - \Bell)^T C (V \mathbf{w} - \Bell) \\
-		s.t. & \quad \mathbf{w}^T \mathbf{w} = n.
+		s.a. & \quad \mathbf{w}^T \mathbf{w} = n.
 	\end{split}
 \end{equation}
 
@@ -444,7 +444,7 @@ excepto el primero, y $ H $ como la matriz diagonal con todos los valores propio
 \begin{equation}
 	\begin{split}
 		\arg\min_{\mathbf{w}} &\quad \mathbf{w}^T Q \mathbf{w} + 2 b^T \mathbf{w} + c \Bell^T C \Bell \\
-		s.t. &\quad \mathbf{w}^T \mathbf{w} = n,
+		s.a. &\quad \mathbf{w}^T \mathbf{w} = n,
 	\end{split}
 \end{equation}
 
