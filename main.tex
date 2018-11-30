@@ -1,4 +1,4 @@
-\documentclass[openany]{book}
+\documentclass[twoside,openright]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
@@ -10,6 +10,7 @@
 \usepackage{algorithmic}
 \usepackage{algorithm}
 \usepackage{setspace}
+\usepackage{fancyhdr}
 \usepackage{pdfpages}
 \usepackage[toc,page]{appendix}
 \RequirePackage{amsfonts,amsmath,amssymb,amsthm}
@@ -22,29 +23,47 @@
 \addto\captionsspanish{\renewcommand\chaptername{Secci\'on}}
 \addto\captionsspanish{\renewcommand{\listtablename}{\'Indice de tablas}}
 
+\def\blankpage{%
+      \clearpage%
+      \thispagestyle{empty}%
+      % \addtocounter{page}{-1}%
+      \null%
+      \clearpage}
+
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{\thepage}
 
 \begin{document}
-\frontmatter
 \input{tex/tapa.tex}
+\blankpage
 \input{tex/caratula.tex}
+\blankpage
 \input{tex/segundahoja.tex}
+\blankpage
 \input{tex/declaracion.tex}
+\blankpage
 \input{tex/compilacion.tex}
+\blankpage
 
+\frontmatter
 \tableofcontents
-
-
+\blankpage
 \listoftables
+\blankpage
 \listoffigures
-
+\blankpage
 \input{tex/resumen.tex}
 
 \mainmatter
 
 \input{tex/introduccion.tex}
 \input{tex/objetivos.tex}
+\blankpage
 \input{tex/metodologia.tex}
+\blankpage
 \input{tex/resultados.tex}
+\blankpage
 \input{tex/conclusiones.tex}
 \input{tex/publicaciones.tex}
 

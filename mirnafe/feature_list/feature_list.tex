@@ -1,0 +1,407 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[landscape]{geometry}
+ \geometry{
+ a4paper,
+ total={210mm,297mm},
+ left=22mm,
+ right=22mm,
+ top=25mm,
+ bottom=25mm,
+ }
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{babelbib}
+\usepackage{fontenc}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+
+\newcommand{\sinc}{{\bf{s{\i}nc}($i$)}}
+
+\renewcommand*{\arraystretch}{2.4}
+\setlength{\tabcolsep}{16pt}
+
+\begin{document}
+\setcounter{page}{55}
+
+\begin{center}
+{\LARGE \textbf{miRNAfe detailed feature list}}
+
+{Cristian A. Yones, Georgina Stegmayer, Laura Kamenetzky, and Diego H. Milone}
+\end{center}
+
+\section{Sequence}
+
+\small
+\begin{longtable}{ >{\raggedright\arraybackslash}p{4cm}  p{2.2cm}  p{5.4cm}  p{1.6cm}  l  cp{1cm} }
+ \toprule
+ Feature name & Abbreviation & \centering Brief description & Reference & miRNAfe function name  & Vector length \\
+ \midrule
+ \endhead
+ \bottomrule
+ \endlastfoot
+
+\bfseries{1. Length of sequence} & $l$ &  & \cite{MM09}$^{(ap)}$\footnotemark & \verb|sequence_length| & 1\\
+
+\bfseries{2. Nucleotide proportion} & $A\%, C\%, G\%, U\%$ & Ratio of each base in the sequence & \cite{SP05}$^{(a)}$ & \verb|nt_proportion| & 4\\
+
+\bfseries{3. Dinucleotide ratio} & $AA\%$, $AU\%$, $...$, $GC\%$, $GG\%$ & Ratio of dinucleotide elements of each kind. & \cite{RV09}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|dinucleotide_proportion| & 16 \\
+
+\bfseries{4. G+C content} & - & Aggregated proportion of guanine and cytosine on the sequence $$ G+C_{content} = {\frac{G + C}{G + C + A + U}} $$ & \cite{HS06}$^{(a)}$, \cite{RV09}$^{(a)}$, \cite{MM09}$^{(ap)}$, \cite{PM11}$^{(a)}$ & \verb|gc_content| & 1\\
+
+\bfseries{5. G/C ratio} & - & Ratio of guanine over cytosine $$ G/C_{ratio} = {\frac{G}{C}} $$ & \cite{JS10}$^{(a)}$ & \verb|gc_ratio| & 1 \\
+
+\end{longtable}
+
+\footnotetext{the features of this reference were used in: (a) animals, (p) plants and/or (v) viruses.}
+
+\newpage
+
+
+
+
+
+\section{Secondary structure}
+
+\small
+\begin{longtable}{ >{\raggedright\arraybackslash}p{4.2cm}  p{1.6cm}  p{5.8cm}  p{1.2cm}  l  cp{1cm} }
+ \toprule
+ Feature name & Abbreviation & \centering Brief description & Reference & miRNAfe function name  & Vector length \\
+ \midrule
+ \endhead
+ \bottomrule
+ \endlastfoot
+
+\bfseries{1. Triplets} & - & Vector of 32 elements with the triplets frequency. A triplet is an element formed with the structure composition (paired or not paired) of three adjacent nucleotides and the base of the middle. An example of these elements is \textquotedblleft.((A\textquotedblright, where the parenthesis represent a paired nucleotide, a dot a not paired one and the letter is the base of the middle nucleotide  & \cite{XL05}$^{(apv)}$, \cite{PH07}$^{(ap)}$, \cite{MM09}$^{(ap)}$, \cite{JS10}$^{(a)}$ & \verb|triplets| & 32 \\
+
+\bfseries{2. Huang elements proportion} & - & This feature uses Huang's notation. It is a vector with 10 elements where each one is the proportion of a Huang element (``=-'', ``=='', ``=:'', ``--'', ``-='', ``\^{}\^{}'', ``\^{}='', ``::'', ``:\^{}'' and ``:=''). & \cite{HF07}$^{(a)}$ & \verb|huang_elements_proportion| & 10 \\
+
+\bfseries{3. Huang's $pMatch$ ratio} & $pMatch$ & This feature use Huang's notation. $pMatch$ indicates the base pairing and is calculated over putative mature miRNA, selected as the 22 nucleotide region where it is maximum.
+ & \cite{HF07}$^{(a)}$ & \verb|huang_ratios| & 1 \\
+
+\bfseries{4. Huang's $pMismatch$ ratio} & $pMismatch$ & This feature use Huang's notation and is calculated over putative mature miRNA, selected as the 22 nucleotide region where $pMatch$ is maximum. $pMismatch$ represents the frequency of non-pairing base pairs (indicated by the size of the interior loops). & \cite{HF07}$^{(a)}$ & \verb|huang_ratios| & 1 \\
+
+\bfseries{5. Huang's $pDI$ ratio} & $pDI$ & This feature use Huang's notation and is calculated over putative mature miRNA, selected as the 22 nucleotide region where $pMatch$ is maximum. $pDI$ represents the deletion and insertion frequencies. & \cite{HF07}$^{(a)}$ & \verb|huang_ratios| & 1 \\
+
+\bfseries{6. Huang's $pBulge$ ratio} & $pBulge$ & This feature use Huang's notation and is calculated over putative mature miRNA, selected as the 22 nucleotide region where $pMatch$ is maximum. $pBulge$ indicates the symmetry of the bulged loops. & \cite{HF07}$^{(a)}$ & \verb|huang_ratios| & 1 \\
+
+\bfseries{7. Steam number} & $ l_s $ & Number of stems in the secondary structure. & \cite{HS06}$^{(a)}$, \cite{SH07}$^{(a)}$, \cite{MM09}$^{(ap)}$ & \verb|stem_number| & 1 \\
+
+\bfseries{8.  $A-U$ base pair proportion per stem} & ${A-U/N_{stems}}$ & Number of adenine-uracil base pair divided by the number of stems. & \cite{SP05}$^{(a)}$, \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|bp_proportion_stem| & 1 \\
+
+\bfseries{9.  $G-C$ base pair proportion per stem} & ${G-C/N_{stems}}$ & Number of guanine-cytosine base pair divided by the number of stems. & \cite{SP05}$^{(a)}$, \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|bp_proportion_stem| & 1 \\
+
+\bfseries{10.  $G-U$ base pair proportion per stem} & ${G-U/N_{stems}}$ & Number of guanine-uracil base pair divided by the number of stems. & \cite{SP05}$^{(a)}$, \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|bp_proportion_stem| & 1 \\
+
+\bfseries{11. Average base pair per stem} & Avg\_BP\_Stem & Average of nucleotides per stem. & \cite{SP05}$^{(a)}$, \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|avg_bp_stem| & 1 \\
+
+\bfseries{12. Length of the longest stem} & - & Longest region where the pairing is perfect. & \cite{SP05}$^{(a)}$ & \verb|longest_stem_length| & 1 \\
+
+ \bfseries{13. Steam region length} & $ l_s $ & Number of nucleotides in the stem region of the secondary structure. & \cite{HS06}$^{(a)}$, \cite{SH07}, \cite{MM09}$^{(ap)}$ & \verb|stem_length| & 1 \\
+
+ \bfseries{14. Terminal loop length} & $ l_h $ & Amount of nucleotides not paired in the terminal loop of the secondary structure
+$$ l_h = l - l_s. $$
+ & \cite{HS06}$^{(a)}$, \cite{SH07}$^{(a)}$, \cite{MM09}$^{(ap)}$ & \verb|terminal_loop_length| & 1 \\
+
+\bfseries{15. Bulges number} & $N_b$ & & \cite{MM06}$^{(apv)}$ & \verb|bulge_number| & 1 \\
+
+\bfseries{16. Loop number} & $N_l$ & Total number of loops, including the terminal loop. & \cite{MM06}$^{(apv)}$, \cite{MM09}$^{(ap)}$ & \verb|loops_number| & 1 \\
+
+\bfseries{17. Longest loop length} & $l_{ll}$ & & \cite{MM09}$^{(ap)}$ & \verb|longest_loop_length| & 1 \\
+
+\bfseries{18. Asymmetric loops number} & $N_{al}$ & & \cite{MM06}$^{(apv)}$ & \verb|aloops_number| & 1 \\
+
+\bfseries{19. Symmetric loops number} & $N_{sl}$ & & \cite{MM09}$^{(ap)}$ & \verb|sloops_number| & 1 \\
+
+\bfseries{20. Nucleotides in symmetric loops} & $N_{nsl}$ &  & \cite{SP05}$^{(a)}$, \cite{MM09}$^{(ap)}$ & \verb|nt_sloops| & 1 \\
+
+\bfseries{21. Nucleotides in asymmetric loops} & $N_{nsl}$ &  & \cite{SP05}$^{(a)}$ & \verb|nt_aloops| & 1 \\
+
+\bfseries{22. Longest symmetric region} & - & Length and distance to terminal loop of the symmetric region without asymmetric loops or bulges. The symmetric loops are allowed. & \cite{SP05}$^{(a)}$ & \verb|longest_simmetric_region| & 1 \\
+
+\bfseries{23. Average length of symmetric loops} & - &  & \cite{SP05}$^{(a)}$ & \verb|avg_length_sloops| & 1 \\
+
+\bfseries{24. Average length of asymmetric loops} & - &  & \cite{SP05}$^{(a)}$ & \verb|avg_length_aloops| & 1 \\
+
+\bfseries{25. Number of bulges of length 1 to 7 and \textgreater7} & - & Vector with the number of bulges of length 1, 2, ..., 7 and greater than 7. & \cite{MM06}$^{(apv)}$ & \verb|nbulge_length| & 8 \\
+
+\bfseries{26. Number of loops of length 1 to 7 and \textgreater7} & - & Vector with the number of loops of length 1, 2, ..., 7 and greater than 7. & \cite{MM06}$^{(apv)}$ & \verb|nloops_length| & 8 \\
+
+\bfseries{27. Base pair number} & $nP$ & Number of base pair, i.e number of paired nucleotides divided by 2 & \cite{MM06}$^{(apv)}$ & \verb|bp_number| & 1 \\
+
+\bfseries{28. Adjusted base pair propension} & $dP$ & Number of base pair divided by the nucleotide number. & \cite{KS07}, \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|dP| & 1 \\
+
+\bfseries{29. $A-U$ pair proportion} & $A-U\%$ & Proportion of adenine-uracil over the total number of base pairs. & \cite{SP05}$^{(a)}$, \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|bp_proportion| & 1 \\
+
+ \bfseries{30. $G-C$ pair proportion} & $G-C\%$ & Proportion of guanine-cytosine over the total number of base pairs. & \cite{SP05}$^{(a)}$, \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|bp_proportion| & 1 \\
+
+ \bfseries{31. $G-U$ pair proportion} & $G-U\%$ & Proportion of guanine-uracil over the total number of base pairs. & \cite{SP05}$^{(a)}$, \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|bp_proportion| & 1 \\
+
+\bfseries{32. $G+C$ content in the terminal loop} & - & Aggregated proportion of guanine and cytosine on the terminal loop. & \cite{MM09}$^{(ap)}$ & \verb|gc_content_loop| & 1 \\
+
+\bfseries{33. Reads count} & - & The number of reads that match with the stem region of the analyzed sequence.  & \cite{MM09}$^{(ap)}$ & \verb|read_count| & 1 \\
+
+\end{longtable}
+
+
+
+
+\newpage
+
+
+
+
+
+\section{Thermodynamic stability}
+
+\small
+\begin{longtable}{ >{\raggedright\arraybackslash}p{4.2cm}  p{1.6cm}  p{5.8cm}  p{1.8cm}  l  cp{1cm} }
+ \toprule
+ Feature name & Abbreviation & \centering Brief description & Reference & miRNAfe function name  & Vector length \\
+ \midrule
+ \endhead
+ \bottomrule
+ \endlastfoot
+
+\bfseries{1. Minimum free energy} & $MFE$ & Minimum free energy obtained with the algorithm from Zuker, M. y P. Stiegler, 1981. & \cite{SP05}$^{(a)}$, \cite{PH07}$^{(ap)}$, \cite{HF07}$^{(a)}$, \cite{MM09}$^{(ap)}$ & \verb|mfe| & 1 \\
+
+\bfseries{2. Ensemble free energy} & $EFE$ & Ensemble free energy obtained with the algorithm from McCaskill, 1990. & \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|efe| & 1 \\
+
+\bfseries{3. MFE index 1} & $MFEI_1$ & Ratio between the minimum free energy and the G+C content. & \cite{ZP06}, \cite{KS07}$^{(ap)}$, \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|mfei1| & 1 \\
+
+ \bfseries{4. Difference of MFE and EFE} & $Diff$ & Difference between these two values, divided by the sequence length,
+$$ Diff = \frac{MFE - EFE}{l} .$$
+& \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|mfe_efe_difference| & 1 \\
+
+\bfseries{5. adjusted MFE} & dG & Minimum free energy divided by the sequence length. & \cite{GT07}$^{(a)}$, \cite{ZP06}, \cite{KS07}$^{(ap)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|dG| & 1 \\
+
+\bfseries{6. MFE index 2} & $MFEI_2$ & Ratio between the dG and the number of stems. & \cite{KS07}$^{(ap)}$, \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|mfei2| & 1 \\
+
+\bfseries{7. MFE index 3} & $MFEI_3$ & Ratio between the dG and number of loops. & \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|mfei3| & 1 \\
+
+\bfseries{8. MFE index 4} & $MFEI_4$ & Ratio between the dG and the G+C content. & \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|mfei4| & 1 \\
+
+\bfseries{9. Adjusted Shannon's entropy} & dQ & Characterize the probability of base pairing in a secondary structure as a chaotic dynamic system
+$$ dQ = \frac{1}{l} \sum_{i<j} p_{ij} \log_2 p_{ij} , $$
+where $p_{ij}$ is the probability of pairing of nucleotides $i$ and $j$. This value is calculated with the algorithm from McCaskill, 1990. Low values of dQ correspond to distributions dominated by a few bases likely to be matched. These bases are better predicted than those that have multiple alternative states. & \cite{KS07}$^{(ap)}$, \cite{RV09}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|dQ| & 1 \\
+
+\bfseries{10. Adjusted base pair distance} & dD & It is the base pair distance for all pairs of structures inferred from the sequence
+$$ dD = \frac{1}{l} \sum_{i<j} p_{ij} (1 - p_{ij})  , $$
+ & \cite{KS07}$^{(ap)}$, \cite{RV09}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|dD| & 1 \\
+
+
+\bfseries{11. Ensemble frequency in the set} & Freq & Obtained with the algorithm from  McCaskill, 1990. & \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|ensemble_frequency| & 1 \\
+
+\bfseries{12. Set diversity} & Diversity & Obtained with the algorithm from McCaskill, 1990. & \cite{RV09}$^{(a)}$, \cite{JS10}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|diversity| & 1 \\
+
+\bfseries{13. Stem 5' potential} & $P^L$ & It is the maximum probability of pairing a nucleotide with other that is on the 5' direction.
+$$ Pl_i = \max_{j<i} p_{ij} , $$
+where $p_{ij}$ is the same defined for dQ.
+& \cite{GT07}$^{(a)}$ & \verb|stem5_potential| & Variable \\
+
+\bfseries{14. Stem 3' potential} & $P^R$ & It is the maximum probability of pairing a nucleotide with other than the corresponding in the 3' direction.
+$$ Pl_i = \max_{j>i} p_{ij} , $$
+where $p_{ij}$ is the same defined for dQ. & \cite{GT07}$^{(a)}$ & \verb|stem5_potential| & Variable \\
+
+\bfseries{15. Loop potential} & $V'$ & It is a vector where each element measures how likely a nucleotide can be part of the terminal loop
+$$ V'_i = \sum_{j} \omega_{i-j} \Bigg[ \sum_{k} p_{j-k,j+k} + p_{j-k+1,j+k} \Bigg] $$
+where $p_{ij}$ is the same defined for dQ and $\omega$ is a smoothing window. & \cite{GT07}$^{(a)}$ & \verb|loop_potential| & Variable \\
+% omega is defined in \cite{GT07}$^{(a)}$
+
+\end{longtable}
+
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+\section{Statistical stability}
+
+\small
+\begin{longtable}{ >{\raggedright\arraybackslash}p{4.2cm}  p{1.6cm}  p{5.6cm}  p{1.8cm}  l  cp{1cm} }
+ \toprule
+ Feature name & Abbreviation & \centering Brief description & Reference & miRNAfe function name  & Vector length \\
+ \midrule
+ \endhead
+ \bottomrule
+ \endlastfoot
+
+\bfseries{1. Standard score of the $MFE$} & $zMFE$ & Minimum free energy normalized with z-score.
+ & \cite{HS06}$^{(a)}$, \cite{GT07}$^{(a)}$ & \verb|zMFE| & 1 \\
+
+\bfseries{2. Standard score of the $EFE$} & $zEFE$ & Ensemble free energy normalized with z-score. & \cite{JS10}$^{(a)}$ & \verb|zEFE| & 1 \\
+
+\bfseries{3. Standard score of the $dG$} & $zG$ & Adjusted minimum free energy normalized with z-score. & \cite{KS07}$^{(ap)}$, \cite{RV09}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|zG| & 1 \\
+
+\bfseries{4. Standard score of the Shannon's entropy} & $zQ$ & Adjusted Shannon's entropy normalized with z-score. & \cite{KS07}$^{(ap)}$, \cite{RV09}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|zQ| & 1 \\
+
+\bfseries{5. Standard score of the base pair propention} & $zP$ & Base pair propention adjusted and normalized using z-score. & \cite{KS07}$^{(ap)}$, \cite{RV09}$^{(a)}$, \cite{PM11}$^{(a)}$ & \verb|zP| & 1 \\
+
+\bfseries{6. Standard score of the base pair distance} & $zD$ & Adjusted base pair distance normalized using z-score. & \cite{JS10}$^{(a)}$ & \verb|zD| & 1 \\
+
+\bfseries{7. Monte Carlo and randomization test over MFE} & $pMFE$ & p-value of the ensemble free energy. & \cite{BW04}$^{(ap)}$ & \verb|pMFE| & 1 \\
+
+\bfseries{8. Monte Carlo and randomization test over EFE} & $pEFE$ & p-value of the minimum free energy.
+& \cite{JS10}$^{(a)}$ & \verb|pEFE| & 1 \\
+
+\end{longtable}
+
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+\section{Phylogenetic conservation}
+
+\small
+\begin{longtable}{ >{\raggedright\arraybackslash}p{4.2cm}  p{1.6cm}  p{5.6cm}  p{1.8cm}  l  cp{1cm} }
+ \toprule
+ Feature name & Abbreviation & \centering Brief description & Reference & miRNAfe function name  & Vector length \\
+ \midrule
+ \endhead
+ \bottomrule
+ \endlastfoot
+
+\bfseries{1. Mutation frequency} & $-$ & Number of mutation (differences) between two sequences of RNA. Only applicable to alignments of two sequences. & \cite{HF07}$^{(a)}$ & \verb|mutation_frequency| & 1 \\
+
+\bfseries{2. Column entropy of the 5' arm} & $S5'$ & Shannon's entropy of the 5' arm & \cite{HS06}$^{(a)}$ & \verb|column_entropy| & 1 \\
+
+\bfseries{3. Column entropy of the 3' arm} & $S3'$ & Shannon's entropy of the 3' arm & \cite{HS06}$^{(a)}$ & \verb|column_entropy| & 1 \\
+
+\bfseries{4. Column entropy of the loop region} & $S0$ & Shannon's entropy of the terminal loop & \cite{HS06}$^{(a)}$ & \verb|column_entropy| & 1 \\
+
+\bfseries{5. Minimum entropy} & $S_{min}$ & Minimum entropy calculated over a region of 21 nucleotides. & \cite{HS06}$^{(a)}$ & \verb|column_entropy| & 1 \\
+
+\bfseries{6. Secondary structure differences} & $Vstrc$ & Difference between the secondary structures of two sequences caused by mutations divided by the number of differences between sequences & \cite{HF07}$^{(a)}$ & \verb|se_difference| & 1 \\
+
+\bfseries{7. Average minimum free energy} & $ \bar{E} $ & Mean of the minimum free energies of the sequences that are part of the alignment. & \cite{HS06}$^{(a)}$ & \verb|mean_mfe| & 1 \\
+
+\bfseries{8. MFE difference} & $VMFE$ & Difference between the minimum free energy of two aligned sequences divided by the number of differences between the sequences. & \cite{HF07}$^{(a)}$ & \verb|mfe_difference| & 1 \\
+
+\bfseries{9. Average of $dG$} & $\bar{\epsilon}$ & Mean of the adjusted minimum free energies of aligned sequences. & \cite{HS06}$^{(a)}$ & \verb|mean_dG| & 1 \\
+
+\bfseries{10. Average of $MFEI_1$} & $\bar{\eta}$ & Mean of the $MFE_{1}$ of the aligned sequences.
+& \cite{HS06}$^{(a)}$ & \verb|mean_mfei1| & 1 \\
+
+\bfseries{11. Free energy of the consensus secondary structure} & $E_{cons}$ &  & \cite{HS06}$^{(a)}$, \cite{LN03}$^{(a)}$ & \verb|mfe_consensus| & 1 \\
+
+\bfseries{12. Conservation of the 3' arm} & $-$ & Number of bases conserved in two or more sequences in the 3' arm, without the 10 first bases of the substring. & \cite{HS06}$^{(a)}$, \cite{LN03}$^{(a)}$ & \verb|conservation_3| & 1 \\
+
+\bfseries{13. Conservation of the 5' arm} & $-$ & Number of bases conserved in two or more sequences in the 5' arm, without the 10 first bases of the substring. & \cite{LN03}$^{(a)}$ & \verb|conservation_5| & 1 \\
+
+\bfseries{14. Conservation score} & $CS$ & Conservation score of the alignment of sequences. Internally uses the software PhyloFit\footnotemark. This score is calculated using two Markov processes, one that moves in the time dimension (over the branches of the evolution tree), and the other in space dimension (over the sequence). & \cite{GT07}$^{(a)}$ \cite{AD05} & \verb|conservation_score| & 1 \\
+
+\footnotetext{http://compgen.bscb.cornell.edu/phast/index.php}
+
+\end{longtable}
+
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+\section{22-nt substring analysis}
+
+\small
+\begin{longtable}{ >{\raggedright\arraybackslash}p{4.2cm}  p{1.6cm}  p{5.6cm}  p{1.8cm}  l  cp{1cm} }
+ \toprule
+ Feature name & Abbreviation & \centering Brief description & Reference & miRNAfe function name  & Vector length \\
+ \midrule
+ \endhead
+ \bottomrule
+ \endlastfoot
+
+\bfseries{1. Base pair probability} & $-$ &  Sum of base-pairing probability over the substring. & \cite{LN03}$^{(a)}$ & \verb|ss_base_pair| & Variable \\
+
+\bfseries{2. Not paired bases} & $-$ &  Sum of not paired bases on the substring. & \cite{MM09}$^{(ap)}$ & \verb|ss_not_paired| & Variable \\
+
+\bfseries{3. Extension base pair probability} & $-$ & Sum of base-pairing probability on the secondary structure, without probabilities of the nucleotides on the substring. & \cite{LN03}$^{(a)}$ & \verb|ss_extension_base_pair| & Variable \\
+
+\bfseries{4. Bulge symmetry} & $-$ &  The difference between the amount of not paired bases on each arm of the substring.& \cite{LN03}$^{(a)}$ & \verb|ss_bulge_simetry| & Variable \\
+
+\bfseries{5. Terminal loop distance} & $-$ &  Distance from the substring to the terminal loop. & \cite{LN03}$^{(a)}$, \cite{SH07}$^{(a)}$ & \verb|ss_loop_distance| & Variable \\
+
+\end{longtable}
+
+\newpage
+
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+\begin{center}
+{\LARGE \textbf{miRNAfe validation of feature extraction processes}}
+
+{Cristian A. Yones, Georgina Stegmayer, Laura Kamenetzky, and Diego H. Milone}
+\end{center}
+
+\vspace{0.2cm}
+
+In the next table, the software used for comparisons and their corresponding references are presented.
+
+\vspace{0.4cm}
+
+\begin{longtable}{ p{8cm}  p{12cm} }
+ \hline
+ Feature & Software used \\
+ \hline
+ \endhead
+ \hline
+ \endlastfoot
+
+ Triplets                     & MiRFinder \cite{HF07} \\
+ Huang ratios                 & MiRFinder \cite{HF07} \\
+ Huang elements proportion    & MiRFinder \cite{HF07} \\
+ $G+C_{content}$              & microPred \cite{RV09} \\
+ Dinucleotide proportion      & microPred \cite{RV09} \\
+ $MFEI_1$                     & genRNAStats and RNAspectral of miPred \cite{JS10} \\
+ $MFEI_2$                     & genRNAStats and RNAspectral of miPred \cite{JS10} \\
+ $MFEI_3$                     & microPred \cite{RV09} \\
+ $MFEI_4$                     & genRNAStats and RNAspectral of miPred \cite{JS10} \\
+ $MFE$ difference             & MiRFinder \cite{HF07} \\
+ Secondary structure difference & MiRFinder \cite{HF07} \\
+ Mutation frequency           & MiRFinder \cite{HF07} \\
+ $zMFE$                       & genRandomRNA of miPred \cite{JS10} \\
+ $zEFE$                       & genRandomRNA of miPred \cite{JS10} \\
+ $zQ$                         & genRandomRNA of miPred \cite{JS10} \\
+ $zP$                         & genRandomRNA of miPred \cite{JS10} \\
+ $zG$                         & genRandomRNA of miPred \cite{JS10} \\
+ $zD$                         & genRandomRNA of miPred \cite{JS10} \\
+ $pEFE$                       & genRandomRNA of miPred \cite{JS10} \\
+ $pMFE$                       & genRandomRNA of miPred \cite{JS10}
+
+\end{longtable}
+
+\newpage
+
+\bibliographystyle{babplain}
+\bibliography{feature_list}
+\end{document}
